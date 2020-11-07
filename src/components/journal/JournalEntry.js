@@ -18,8 +18,8 @@ export const JournalEntry = ({value}) => {
 
         </div>
         <div className="journal__entry-data-box">
-            <span>Friday</span>
-            <h4>30</h4>
+            <span>Sábado</span>
+            <h4>06</h4>
         </div>
             
         </div>

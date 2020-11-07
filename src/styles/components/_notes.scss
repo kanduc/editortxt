@@ -13,7 +13,20 @@
     justify-content: space-between;
     padding: 10px 20px;
 }
-
+.notes__appbar-format{
+    align-items: center;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border: 1px solid black;
+    font-size: 25px;
+}
+.notes__appbar-search{
+    padding: 10px 10px;
+    border: 1px solid black;
+}
 .notes__content{
     display: flex;
     flex-direction: column;
@@ -47,4 +60,15 @@
 .notes__image img{
     box-shadow: 5px 5px $dark-grey;
     height: 150px;
+}
+.notes__app-contador{
+ align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+.notes__appbar-subcontador{
+border: 2px solid black;
+padding: 10px;
 }

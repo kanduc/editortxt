@@ -17,7 +17,7 @@ export const Sidebar = () => {
 
            }
                 
-               <span> Usuario</span>
+               <span> Usuario Logueado</span>
            </h3>
            <button className="btn">
                Cerrar Sesión
@@ -25,7 +25,7 @@ export const Sidebar = () => {
 
            </div>
            <div className="journal__new-entry">
-           <i className="far fa-plus-square fa-5x"></i>
+           <i className="fas fa-plus-square fa-5x"></i>
            <p className="mt-5">
                Crear documento
            </p>

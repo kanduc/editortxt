@@ -41,9 +41,10 @@ return (dispatch)=>{ //importante que en una acción asíncrona devuelva el disp
 export const startTwitterLogin=()=>{
     return (dispatch)=>{
         firebase.auth().signInWithPopup(twitterAuthProvider)
-        .then(userCred=>{
+        .then(({user})=>{
             
-            console.log(userCred)
+            dispatch(login(user.uid,user.displayName))
+            console.log(`Bienvenido, estimado ${user.displayName}, con el correo:${user.email}`)
             
         })
     }
@@ -54,8 +55,9 @@ export const startTwitterLogin=()=>{
 export const startFacebookLogin=()=>{
     return (dispatch)=>{
         firebase.auth().signInWithPopup(facebookAuthProvider)
-        .then(userCred=>{
-            console.log(userCred);
+        .then(({user})=>{
+            dispatch(login(user.uid,user.displayName))
+            console.log(`Bienvenido, estimado ${user.displayName}, con el correo:${user.email}`)
         })
     }
 }
