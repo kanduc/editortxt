@@ -6,6 +6,7 @@ import {
 import { useForm } from '../../hooks/useForm';
 import { removeError, setError } from '../../actions/ui';
 import { useDispatch, useSelector } from 'react-redux';
+import {startRegisterAccount} from '../../actions/auth';
 
 export const RegisterScreen = () => {
 
@@ -29,7 +30,7 @@ console.log(msgError);
         e.preventDefault();
       /*   console.log(name, email, password, password2); */
         if(isFormValid()){
-            console.log(`Formulario correcto`);
+            dispatch(startRegisterAccount(name,email, password));
         }
     }
     //instalar librería npm i validator
@@ -69,9 +70,7 @@ console.log(msgError);
             
         }
 
-      
-
-
+    
         <input 
             type="text"
             name="name"
