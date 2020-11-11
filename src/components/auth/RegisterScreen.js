@@ -6,7 +6,7 @@ import {
 import { useForm } from '../../hooks/useForm';
 import { removeError, setError } from '../../actions/ui';
 import { useDispatch, useSelector } from 'react-redux';
-import {startRegisterAccount} from '../../actions/auth';
+import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
 export const RegisterScreen = () => {
     //Importante para hacer el dispatch de la acción se necesita del useDispatch de react-redux;
@@ -17,8 +17,8 @@ export const RegisterScreen = () => {
     console.log(msgError);
 
     const [values, handleInputChange] = useForm({
-        name:'Junior',
-        email:'junior.med19@gmail.com',
+        name:'Jhonny',
+        email:'operaciones@hotmail.com',
         password:'12345678',
         password2:'12345678',
     });
@@ -29,7 +29,8 @@ export const RegisterScreen = () => {
         e.preventDefault();
       /*   console.log(name, email, password, password2); */
         if(isFormValid()){
-            dispatch(startRegisterAccount(name,email, password));
+            console.log(`Formulario correcto`);
+            dispatch(startRegisterWithEmailPasswordName(email, password, name))
         }
     }
     //instalar librería npm i validator
