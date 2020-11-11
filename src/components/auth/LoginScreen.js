@@ -1,4 +1,5 @@
 import React from 'react';
+import validator from 'validator'; //librería de validator
 /* import edit1 from '../../styles/img/edit1.svg';
 import edit4 from '../../styles/img/edit4.svg'; */
 import edit5 from '../../styles/img/edit5.svg'
@@ -28,7 +29,9 @@ export const LoginScreen = () => {
        /*  console.log(email, password); */
      /*   dispatch(login(4555,'Juniorjuo')); */
 
-       dispatch(startLoginEmailPassword(email, password));
+        if(isFormValid()){
+            dispatch(startLoginEmailPassword(email, password));
+        }
 
     }
 
@@ -42,6 +45,21 @@ export const LoginScreen = () => {
 
     const handleTwitterLogin=()=>{
             dispatch(startTwitterLogin());
+    }
+
+    const isFormValid=()=>{
+        if( !validator.isEmail(email)){
+            dispatch(setError(`El email es incorrecto`));
+           /*  console.log(`El email es incorrecto`); */
+            return false;
+        }else if(password.trim().length ===0){
+          dispatch(setError(`Contraseña es requerida`)); 
+            /* console.log(`Contraseña Inválida. Recuerde que las contraseñas deben de tener de  8 caracteres a más`); */
+            return false;
+
+        }
+        dispatch(removeError()) ; //para que en el redux dev tools el msg error aparezca en null
+        return true;
     }
 
 

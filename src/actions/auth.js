@@ -3,26 +3,29 @@ import { facebookAuthProvider, firebase,db, googleAuthProvider, twitterAuthProvi
 
 //Registro de cuenta
 export const startRegisterAccount = (fullName, email, password) =>{
+    console.log("Registro con email-passwrod: email: "+email)
+
     return(dispatch) =>{
         firebase.auth().createUserWithEmailAndPassword(email, password).then(({user}) =>{
-                console.log("Se registro correctamente la cuenta.."+ email)
-                //grabación del nombre de la cuenta.
-                let userRef = db.collection('users').doc(user.uid);
-                userRef.set({
-                    email: email,
-                    name:  fullName,
-                    state: true
-                  });
-                  
-            }).catch((err) =>{
-                console.log(err)
-            })
+            console.log("Se registro correctamente la cuenta.."+ email)
+            //grabación del nombre de la cuenta.
+            let userRef = db.collection('users').doc(user.uid);
+            userRef.set({
+                email: email,
+                name:  fullName,
+                state: true
+              });
+              
+        }).catch((err) =>{
+            console.log(err)
+        })
     }
 }
 //Crearemos una acción asíncrona
 //recibimos como párametro el email and password
 //NJAIMES20201109
 export const startLoginEmailPassword=( email, password )=>{
+    console.log("Login con email-passwrod: email: "+email)
 
     //retorna un callback, que tiene como párametro el dispatch que viene de thunk
 return (dispatch)=>{
@@ -39,6 +42,8 @@ return (dispatch)=>{
     })
     .catch( (errr) => {
         console.log(errr["message"])
+        console.log("Error en el login con la cuenta.."+ email)
+        dispatch(setError(errr["message"]))
     })
     
 //Es una acción asíncrona, porque esperará 3 segundos y medio para mostrar la info
