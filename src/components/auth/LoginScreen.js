@@ -16,6 +16,7 @@ export const LoginScreen = () => {
 
     const dispatch = useDispatch();
     //Es darle acceso al dispatch, sirve para hacer dispatch de acciones
+    const {msgError} = useSelector( state => state.ui );
 
     const [values, handleInputChange]=useForm({
         email:'',
@@ -27,7 +28,7 @@ export const LoginScreen = () => {
     //SUBMIT DEL FORMULARIO
     const handleLogin=(e)=>{
         e.preventDefault();
-       /*  console.log(email, password); */
+       console.log(email); 
      /*   dispatch(login(4555,'Juniorjuo')); */
 
         if(isFormValid()){
@@ -77,6 +78,12 @@ export const LoginScreen = () => {
         <div className="auth__content-secondary">
         <h3 className="auth__title">Iniciar Sesión</h3>
         <form onSubmit={handleLogin}>
+
+        {
+            msgError &&(<div className="auth__alert-error">{msgError}</div>)
+            
+        }
+
         <input 
             type="text"
             name="email"
