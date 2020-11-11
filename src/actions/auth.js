@@ -1,5 +1,5 @@
 import { types } from "../types/types";
-import { removeError, setError } from '.j/ui';
+import { removeError, setError } from './ui';
 import { facebookAuthProvider, firebase,db, googleAuthProvider, twitterAuthProvider } from '../firebase/firebase-config';
 
 //Registro de cuenta
