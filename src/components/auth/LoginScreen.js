@@ -16,7 +16,6 @@ import {startFacebookLogin, startGoogleLogin, startLoginEmailPassword, startTwit
 export const LoginScreen = () => {
 
     const dispatch = useDispatch();
-    dispatch(removeError())
     //Es darle acceso al dispatch, sirve para hacer dispatch de acciones
     const {msgError} = useSelector( state => state.ui );
 
