@@ -1,4 +1,5 @@
 import React from 'react';
+/* import validator from 'validator'; */ //librería de validator
 /* import edit1 from '../../styles/img/edit1.svg';
 import edit4 from '../../styles/img/edit4.svg'; */
 import edit5 from '../../styles/img/edit5.svg'
@@ -7,17 +8,18 @@ import {
     Link,
   } from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {startFacebookLogin, startGoogleLogin, startLoginEmailPassword, startTwitterLogin} from '../../actions/auth'
+/* import { removeError, setError } from '../../actions/ui'; */
 
 export const LoginScreen = () => {
-
+    const {loading} = useSelector( state => state.ui );
     const dispatch = useDispatch();
     //Es darle acceso al dispatch, sirve para hacer dispatch de acciones
 
     const [values, handleInputChange]=useForm({
-        email:'',
-        password:'',
+        email:'operaciones@hotmail.com',
+        password:'12345678',
     })
 
     const {email, password}= values;
@@ -28,9 +30,32 @@ export const LoginScreen = () => {
        /*  console.log(email, password); */
      /*   dispatch(login(4555,'Juniorjuo')); */
 
-       dispatch(startLoginEmailPassword(email, password));
+       
+       /* if(isFormValid()){
+        console.log(`Formulario correcto`); */
+        dispatch(startLoginEmailPassword(email, password));
+   /*  } */
+    }
+
+//instalar librería npm i validator
+/* const isFormValid=()=>{
+  if( !validator.isEmail(email)){
+        dispatch(setError(`El email es incorrecto`));
+        console.log(`El email es incorrecto`);
+        return false;
+    }else if(password.length < 8){
+      dispatch(setError(`Contraseña Inválida. Recuerde que las contraseñas deben de tener de  8 caracteres a más`)); 
+        console.log(`Contraseña Inválida. Recuerde que las contraseñas deben de tener de  8 caracteres a más`);
+        return false;
 
     }
+    dispatch(removeError()) ; 
+    return true;
+} *///para que en el redux dev tools el msg error aparezca en null
+
+
+
+
 
     const handleGoogleLogin=()=>{
         dispatch(startGoogleLogin());
@@ -58,6 +83,17 @@ export const LoginScreen = () => {
         <div className="auth__content-secondary">
         <h3 className="auth__title">Iniciar Sesión</h3>
         <form onSubmit={handleLogin}>
+        
+      {/*   {
+            //si msgerror es true imprime esto si es null o undefined no imprime nada
+                msgError &&(
+                    <div className="auth__alert-error">
+            {msgError}
+        </div>
+                )
+            
+        } */}
+
         <input 
             type="text"
             name="email"
@@ -78,6 +114,7 @@ export const LoginScreen = () => {
         <button 
         className="btn btn-primary btn-block"
         type="submit"
+        disabled={loading}
         >Iniciar Sesión</button>
     
        <div className="auth__social-networks">

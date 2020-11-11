@@ -6,6 +6,7 @@ import {
 import { useForm } from '../../hooks/useForm';
 import { removeError, setError } from '../../actions/ui';
 import { useDispatch, useSelector } from 'react-redux';
+import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
 export const RegisterScreen = () => {
 
@@ -17,8 +18,8 @@ const {msgError} = useSelector( state => state.ui ); //el useSelector devuelve u
 console.log(msgError);
 
     const [values, handleInputChange] = useForm({
-        name:'Junior',
-        email:'junior.med19@gmail.com',
+        name:'Jhonny',
+        email:'operaciones@hotmail.com',
         password:'12345678',
         password2:'12345678',
     });
@@ -30,6 +31,7 @@ console.log(msgError);
       /*   console.log(name, email, password, password2); */
         if(isFormValid()){
             console.log(`Formulario correcto`);
+            dispatch(startRegisterWithEmailPasswordName(email, password, name))
         }
     }
     //instalar librería npm i validator

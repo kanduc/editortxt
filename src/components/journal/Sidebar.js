@@ -1,9 +1,18 @@
-import React from 'react'
-import { JournalEntries } from './JournalEntries'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../../actions/auth';
+import { JournalEntries } from './JournalEntries';
 
 export const Sidebar = () => {
 
     const hora=new Date().getHours();
+
+    const dispatch = useDispatch();
+
+    const handleLogout=()=>{
+/* console.log(`click`); */
+dispatch(startLogout());
+    }
     
 
 
@@ -19,7 +28,10 @@ export const Sidebar = () => {
                 
                <span> Usuario Logueado</span>
            </h3>
-           <button className="btn">
+           <button 
+           className="btn"
+           onClick={handleLogout}
+           >
                Cerrar Sesión
            </button>
 
