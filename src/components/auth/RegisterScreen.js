@@ -9,13 +9,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import {startRegisterAccount} from '../../actions/auth';
 
 export const RegisterScreen = () => {
+    dispatch(removeError())
 
-//Importante para hacer el dispatch de la acción se necesita del useDispatch de react-redux;
+    //Importante para hacer el dispatch de la acción se necesita del useDispatch de react-redux;
 
-const dispatch = useDispatch();
-const {msgError} = useSelector( state => state.ui ); //el useSelector devuelve un callback con el estado del Redux dev tools
-//en este caso devuelve auth and ui
-console.log(msgError);
+    const dispatch = useDispatch();
+    const {msgError} = useSelector( state => state.ui ); //el useSelector devuelve un callback con el estado del Redux dev tools
+    //en este caso devuelve auth and ui
+    console.log(msgError);
 
     const [values, handleInputChange] = useForm({
         name:'Junior',

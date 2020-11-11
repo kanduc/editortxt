@@ -1,5 +1,5 @@
 import { types } from "../types/types";
-import { removeError, setError } from './ui';
+import { removeError, setError } from '.j/ui';
 import { facebookAuthProvider, firebase,db, googleAuthProvider, twitterAuthProvider } from '../firebase/firebase-config';
 
 //Registro de cuenta
@@ -44,7 +44,7 @@ return (dispatch)=>{
     .catch( (errr) => {
         console.log(errr["message"])
         console.log("Error en el login con la cuenta.."+ email)
-        dispatch(setError(errr["message"]))
+        dispatch(setError("Verifique los datos ingresados. Si no tiene una cuenta, debe registrarse primero."))
     })
     
 //Es una acción asíncrona, porque esperará 3 segundos y medio para mostrar la info

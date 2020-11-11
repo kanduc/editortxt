@@ -10,10 +10,12 @@ import {
 import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeError, setError } from '../../actions/ui';
+import { reset } from 'redux-form';
 import {startFacebookLogin, startGoogleLogin, startLoginEmailPassword, startTwitterLogin} from '../../actions/auth'
 
 export const LoginScreen = () => {
 
+    dispatch(removeError())
     const dispatch = useDispatch();
     //Es darle acceso al dispatch, sirve para hacer dispatch de acciones
     const {msgError} = useSelector( state => state.ui );
@@ -28,11 +30,12 @@ export const LoginScreen = () => {
     //SUBMIT DEL FORMULARIO
     const handleLogin=(e)=>{
         e.preventDefault();
-       console.log(email); 
+        console.log(email); 
      /*   dispatch(login(4555,'Juniorjuo')); */
 
         if(isFormValid()){
             dispatch(startLoginEmailPassword(email, password));
+            dispatch(reset('loginForm'))
         }
 
     }
@@ -77,7 +80,7 @@ export const LoginScreen = () => {
         </div>
         <div className="auth__content-secondary">
         <h3 className="auth__title">Iniciar Sesión</h3>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} name="loginForm">
 
         {
             msgError &&(<div className="auth__alert-error">{msgError}</div>)
