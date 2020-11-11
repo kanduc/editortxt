@@ -10,7 +10,7 @@ import {
 import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeError, setError } from '../../actions/ui';
-import { reset } from 'redux-form';
+//import { reset } from 'redux-form';
 import {startFacebookLogin, startGoogleLogin, startLoginEmailPassword, startTwitterLogin} from '../../actions/auth'
 
 export const LoginScreen = () => {
@@ -35,7 +35,7 @@ export const LoginScreen = () => {
 
         if(isFormValid()){
             dispatch(startLoginEmailPassword(email, password));
-            dispatch(reset('loginForm'))
+            //dispatch(reset('loginForm'))
         }
 
     }

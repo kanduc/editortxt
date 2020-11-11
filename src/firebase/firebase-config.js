@@ -3,14 +3,14 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDkyWnxUAjtMJIZU3IeJFkTcTGOhURM4Ak",
-    authDomain: "editortexto-81244.firebaseapp.com",
-    databaseURL: "https://editortexto-81244.firebaseio.com",
-    projectId: "editortexto-81244",
-    storageBucket: "editortexto-81244.appspot.com",
-    messagingSenderId: "248845203380",
-    appId: "1:248845203380:web:93f216452d758c325264e1",
-    measurementId: "G-LKJDZ0NXJ4"
+    apiKey: "AIzaSyAMrkbz_pV5iq7QsKe09pUwbrqg8XaSz5k",
+    authDomain: "editordiplo-881c0.firebaseapp.com",
+    databaseURL: "https://editordiplo-881c0.firebaseio.com",
+    projectId: "editordiplo-881c0",
+    storageBucket: "editordiplo-881c0.appspot.com",
+    messagingSenderId: "954014973377",
+    appId: "1:954014973377:web:3343c338e90d02b951c340",
+    measurementId: "G-Y7B749833E"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
