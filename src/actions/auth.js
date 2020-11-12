@@ -36,7 +36,7 @@ export const startLoginEmailPassword=( email, password )=>{
         .catch(e=>{
             console.log(e);
             dispatch(finishLoading());
-            const msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
+            var msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
             if (e.code=="auth/user-not-found"){
                 msg = "Usuario no existe. Debe registrar una cuenta primero"
             } else if (e.code=="auth/wrong-password"){
@@ -66,7 +66,7 @@ export const startRegisterWithEmailPasswordName=(email, password, name)=>{
             dispatch(login(user.uid,user.displayName));
         }).catch((e)=>{
             console.log(e);
-            const msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
+            var msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
             if (e.code=="auth/email-already-in-use"){
                 msg = "Usuario ya existe existe. Por favor inicie sesión"
             } 
