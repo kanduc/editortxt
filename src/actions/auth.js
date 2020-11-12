@@ -36,8 +36,14 @@ export const startLoginEmailPassword=( email, password )=>{
         .catch(e=>{
             console.log(e);
             dispatch(finishLoading());
+            const msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
+            if (e.code=="auth/user-not-found"){
+                msg = "Usuario no existe. Debe registrar una cuenta primero"
+            } else if (e.code=="auth/wrong-password"){
+                msg = "Datos incorrectos, por favor validar."
+            }
             /* Swal.fire('Error','No hay un usuario correspondiente a ese correo y password. El usuario no se encuentra en la BD', 'error') */
-            Swal.fire('Error',e.message,'error');
+            Swal.fire('Error',msg,'error');
         })
     }
 }
@@ -57,10 +63,14 @@ export const startRegisterWithEmailPasswordName=(email, password, name)=>{
                 displayName:name
             });
             console.log(user);
-          dispatch(login(user.uid,user.displayName));
+            dispatch(login(user.uid,user.displayName));
         }).catch((e)=>{
             console.log(e);
-            Swal.fire('Error',e.message,'error');
+            const msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
+            if (e.code=="auth/email-already-in-use"){
+                msg = "Usuario ya existe existe. Por favor inicie sesión"
+            } 
+            Swal.fire('Error',msg,'error');
         })
     }
 }
