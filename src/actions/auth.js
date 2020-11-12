@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'; //importar sweetAlert para mensajes o alertas bo
 import { types } from "../types/types";
 import { facebookAuthProvider, firebase, googleAuthProvider, twitterAuthProvider } from '../firebase/firebase-config';
 import { finishLoading, startLoading } from "./ui";
+/* import {useTranslation} from 'react-i18next' */
 
 //Crearemos una acción asíncrona
 //recibimos como párametro el email and password
@@ -34,11 +35,26 @@ return (dispatch)=>{
              
             })
             .catch(e=>{
+                let {code}=e
                 console.log(e);
                 dispatch(finishLoading());
+
+                if(code==="auth/wrong-password"){
+                    Swal.fire('Error','La contraseña no es válida o el usuario no tiene contraseña.','error');
+                }else if(code==="auth/user-not-found"){
+                    Swal.fire('Error','No hay ningún registro de usuario que corresponda a este identificador. Es posible que se haya eliminado al usuario.','error');
+                }else if(code==="auth/invalid-email"){
+                    Swal.fire('Error','La dirección de correo electrónico está mal formateada.','error');
+                }else if(code==="auth/network-request-failed"){
+                    Swal.fire('Error','Se ha producido un error de red (como tiempo de espera, conexión interrumpida o host inaccesible.','error');
+                }
+                //Se ha producido un error de red (como tiempo de espera, conexión interrumpida o host inaccesible).
+
+//La dirección de correo electrónico está mal formateada.
+               
                 /* Swal.fire('Error','No hay un usuario correspondiente a ese correo y password. El usuario no se encuentra en la BD', 'error') */
-                
-                Swal.fire('Error',e.message,'error');
+               /*  const {t} = useTranslation(); */
+              /*   Swal.fire('Error',e.message,'error'); */
            
            
             })
@@ -73,8 +89,13 @@ export const startRegisterWithEmailPasswordName=(email, password, name)=>{
                 console.log(user);
               dispatch(login(user.uid,user.displayName));
             }).catch((e)=>{
+
+                const {code}=e;
                 console.log(e);
-                Swal.fire('Error',e.message,'error');
+                if(code==="auth/email-already-in-use"){
+                    Swal.fire('Error','La dirección de correo electrónico ya está siendo utilizada por otra cuenta.','error');
+                }
+               /*  Swal.fire('Error',e.message,'error'); */
             })
 
 
