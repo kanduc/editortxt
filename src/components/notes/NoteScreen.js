@@ -2,8 +2,11 @@ import React from 'react'
 import { NotesAppBar } from './NotesAppBar'
 import { NotesContador } from './NotesContador'
 import { NotesFormatBar } from './NotesFormatBar'
+import { useSelector } from 'react-redux';
 
 export const NoteScreen = () => {
+    const {text_area} = useSelector( state => state.ui );
+
     return (
         <div className="notes__main-content">
         
@@ -21,6 +24,7 @@ export const NoteScreen = () => {
         <textarea
        placeholder="Escriba Aquí"
         className="notes__textarea"
+        value={text_area}
         >
 {/*  placeholder="What happened today" */}
         </textarea>
