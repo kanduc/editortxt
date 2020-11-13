@@ -6,8 +6,8 @@ import { Sidebar } from './Sidebar'
 
 export const JournalScreen = () => {
 //selecciono del estado el active de la nota
-    const {active} = useSelector( state => state.notes );
-    console.log(active);
+    //const {active} = useSelector( state => state.notes );
+    //console.log(active);
 
 
     return (
@@ -15,12 +15,8 @@ export const JournalScreen = () => {
             <Sidebar />
 
             <main>
-            {
-                //Si active tiene algun doc muestra sino se pone en página de inicio
-                (active)?<NoteScreen />: <NothingSelected />
-            }
                 {/* <NothingSelected /> */}
-              {/*   <NoteScreen /> */}
+                 <NoteScreen /> 
             </main>
         </div>
     )
