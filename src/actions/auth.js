@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2'; //importar sweetAlert para mensajes o alertas bonitas
 //npm install sweetalert2
 import { types } from "../types/types";
-import { facebookAuthProvider, firebase, googleAuthProvider, twitterAuthProvider } from '../firebase/firebase-config';
+import { facebookAuthProvider, firebase, db, googleAuthProvider, twitterAuthProvider } from '../firebase/firebase-config';
 import { finishLoading, startLoading } from "./ui";
 
 //Crearemos una acción asíncrona
@@ -57,9 +57,16 @@ export const startRegisterWithEmailPasswordName=(email, password, name)=>{
         //el displayname aparece en null
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(async({user})=>{
+            //grabación del nombre de la cuenta.
+            let userRef = db.collection('users').doc(user.uid);
+            userRef.set({
+                email: email,
+                name:  name,
+                state: true
+              });
             //se utiliza la función async await para trabajar la promesa y evitar trabajar con los then
             //user updateprofile, mando un objeto para actualizarlo
-           await user.updateProfile({
+            await user.updateProfile({
                 displayName:name
             });
             console.log(user);
