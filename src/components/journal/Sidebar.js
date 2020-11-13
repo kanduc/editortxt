@@ -10,7 +10,7 @@ export const Sidebar = () => {
     const hora=new Date().getHours();
 
     const dispatch = useDispatch();
-    //const {name} = useSelector( state => state.auth );
+    const {name} = useSelector( state => state.auth );
  /*    console.log(state); */
 
     const handleLogout=()=>{
@@ -34,7 +34,7 @@ dispatch(startLogout());
 
            }
                 
-               <span> Usuario</span>
+               <span> {name}</span>
            </h3>
            <button 
            className="btn"

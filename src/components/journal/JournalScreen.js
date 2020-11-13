@@ -14,8 +14,12 @@ export const JournalScreen = () => {
             <Sidebar />
 
             <main>
+                {
+                //Si active tiene algun doc muestra sino se pone en página de inicio
+                    (active)?<NoteScreen />: <NothingSelected />
+                }
                 {/* <NothingSelected /> */}
-                 <NoteScreen /> 
+                {/*   <NoteScreen /> */}
             </main>
         </div>
     )
