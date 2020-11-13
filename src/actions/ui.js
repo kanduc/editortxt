@@ -22,7 +22,3 @@ export const startLoading=()=>({
 export const finishLoading=()=>({
     type:types.uiFinishLoading,
 })
-
-export const clearText=()=>({
-    type:types.uiClearText,
-})

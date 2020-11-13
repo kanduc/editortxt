@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'; //importar sweetAlert para mensajes o alertas bo
 import { types } from "../types/types";
 import { facebookAuthProvider, firebase, db, googleAuthProvider, twitterAuthProvider } from '../firebase/firebase-config';
 import { finishLoading, startLoading } from "./ui";
+/* import {useTranslation} from 'react-i18next' */
 
 //Crearemos una acción asíncrona
 //recibimos como párametro el email and password
@@ -36,16 +37,16 @@ export const startLoginEmailPassword=( email, password )=>{
         .catch(e=>{
             console.log(e);
             dispatch(finishLoading());
-            var msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
+            let msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
             if (e.code=="auth/user-not-found"){
-                msg = "Usuario no existe. Debe registrar una cuenta primero"
-            } else if (e.code=="auth/wrong-password"){
-                msg = "Datos incorrectos, por favor validar."
+                msg = "No hay ningún registro de usuario que corresponda a este correo electrónico. Por favor, debe registrar una cuenta primero"
+            } else if (e.code=="auth/wrong-password" || e.code=="auth/invalid-email"){
+                msg = "Datos ingresados incorrectos, por favor validar."
             }
-            /* Swal.fire('Error','No hay un usuario correspondiente a ese correo y password. El usuario no se encuentra en la BD', 'error') */
             Swal.fire('Error',msg,'error');
         })
     }
+
 }
 
 //TRABAJANDO EL REGISTRO CON EMAIL Y CONTRASEÑA
@@ -75,7 +76,7 @@ export const startRegisterWithEmailPasswordName=(email, password, name)=>{
             console.log(e);
             var msg = "Hubo un error, por favor, vuelva a intentarlo en unos momentos"
             if (e.code=="auth/email-already-in-use"){
-                msg = "Usuario ya existe existe. Por favor inicie sesión"
+                msg = "La dirección de correo electrónico ya se encuentra registrada. Por favor inicie sesión"
             } 
             Swal.fire('Error',msg,'error');
         })

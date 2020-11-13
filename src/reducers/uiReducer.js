@@ -3,8 +3,7 @@ import {types} from '../types/types';
 
 const initalState={
     loading:false,
-    msgError:null,
-    text_area:"",
+    msgError:null
 }
 
 export const uiReducer = (state=initalState, action) => {
@@ -33,12 +32,6 @@ export const uiReducer = (state=initalState, action) => {
                 loading:false,
                
             };
-
-        case types.uiClearText:
-                return{
-                    ...state,
-                    text_area:"",
-                };
     
         default:
             return state;
