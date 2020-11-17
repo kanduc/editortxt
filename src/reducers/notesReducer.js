@@ -2,7 +2,10 @@ import { types } from "../types/types";
 
 const initialState={
     notes:[],
-    active:null
+    active:null,
+    saved:false,
+    timeout:null,
+    docValue: '',
 }
 
 
@@ -25,6 +28,24 @@ switch (action.type) {
             notes:[...action.payload]
         }
 
+    case types.setNewValue:
+        return {
+            ...state,
+            timeout:...action.payload.newId,
+            docValue:...action.payload.value,
+        };
+
+    case types.setSavedValue:
+        return {
+            ...state,
+            saved:true
+        };
+
+    case types.finishSavedValue:
+        return {
+            ...state,
+            active:false
+        };
 
     default:
         return state;

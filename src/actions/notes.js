@@ -68,3 +68,19 @@ export const setNote=( notes )=>({
     payload:notes,
 
 })
+
+export const setNewValue = (newId, value) => ({
+    type: types.setNewValue,
+    payload: {
+        newId,
+        value
+    }
+})
+
+export const setSavedValue = () => ({
+    type: types.setSavedValue
+})
+
+export const finishSavedValue = () => ({
+    type: types.finishSavedValue
+})

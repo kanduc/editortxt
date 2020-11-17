@@ -16,6 +16,10 @@ export const types={
     notesFileUrl: '[Editor] Update image url',
     notesDelete: '[Editor] Delete note',
     notesLogoutCleaning: '[Editor] Logout Cleaning',
+
+    setNewValue: '[Editor] New value',
+    setSavedValue: '[Editor] Saving value',
+    finishSavedValue: '[Editor] Finish saving',
     
 
 }
