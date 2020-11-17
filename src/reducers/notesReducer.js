@@ -5,7 +5,7 @@ const initialState={
     active:null,
     saveDocument:false,
     timeout:null,
-    docValue: ''
+    docValue:''
 }
 
 
