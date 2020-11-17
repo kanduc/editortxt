@@ -82,7 +82,7 @@ export const NoteScreen = () => {
         >{docValue}
         {/*  placeholder="What happened today" */}
         </textarea>
-        <div className={'saved' + (saveDocument ? ' saved-visible' : '')}><p>{(saveDocument ? 'Guardado' : 'Se esta guardando')}</p></div>
+        <div className={'saved' + (saveDocument ? ' saved-visible' : '')}><p>{(saveDocument ? 'Se esta guardando' : 'Guardado')}</p></div>
 
       {/*   <div className="notes__image">
             <img 
