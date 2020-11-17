@@ -5,7 +5,7 @@ const initialState={
     active:null,
     saved:false,
     timeout:null,
-    docValue: '',
+    docValue: ''
 }
 
 
@@ -44,7 +44,7 @@ switch (action.type) {
     case types.finishSavedValue:
         return {
             ...state,
-            active:false
+            saved:false
         };
 
     default:

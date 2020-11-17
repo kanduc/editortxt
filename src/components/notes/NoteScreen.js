@@ -16,6 +16,7 @@ export const NoteScreen = () => {
    const {docValue} = useSelector( state => state.docValue );
    console.log(saved);
    console.log(timeout);
+   console.log(docValue);
 
    const  [values, handleInputChange, reset]= useForm(docNew);
 
