@@ -3,7 +3,7 @@ import { types } from "../types/types";
 const initialState={
     notes:[],
     active:null,
-    saved:false,
+    saveDocument:false,
     timeout:null,
     docValue: ''
 }
@@ -38,13 +38,13 @@ switch (action.type) {
     case types.setSavedValue:
         return {
             ...state,
-            saved:true
+            saveDocument:true
         };
 
     case types.finishSavedValue:
         return {
             ...state,
-            saved:false
+            saveDocument:false
         };
 
     default:
