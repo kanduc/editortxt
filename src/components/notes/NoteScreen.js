@@ -11,9 +11,9 @@ export const NoteScreen = () => {
    const dispatch = useDispatch();
 
    const {active:docNew} = useSelector( state => state.notes );
-   //const {saveDocument} = useSelector( state => state.saveDocument );
-   const {timeout} = useSelector( state => state.timeout );
-   const {docValue} = useSelector( state => state.docValue );
+   const {saveDocument} = useSelector( state => state.notes );
+   const {timeout} = useSelector( state => state.notes );
+   const {docValue} = useSelector( state => state.notes );
    //console.log(saveDocument);
    console.log(timeout);
    console.log(docValue);
@@ -82,6 +82,7 @@ export const NoteScreen = () => {
         >{docValue}
         {/*  placeholder="What happened today" */}
         </textarea>
+        <div className={'saved' + (saveDocument ? ' saved-visible' : '')}><p>Saved Successfully</p></div>
 
       {/*   <div className="notes__image">
             <img 
