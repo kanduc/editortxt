@@ -31,8 +31,8 @@ switch (action.type) {
     case types.setNewValue:
         return {
             ...state,
-            timeout:...action.payload.newId,
-            docValue:...action.payload.value,
+            timeout:action.payload.newId,
+            docValue:action.payload.value,
         };
 
     case types.setSavedValue:
