@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useForm } from '../../hooks/useForm'
 import { NotesAppBar } from './NotesAppBar'
 import { NotesContador } from './NotesContador'
 import { NotesFormatBar } from './NotesFormatBar'
+import { setNewValue, finishSavedValue, setSavedValue } from '../../actions/notes';
 
 export const NoteScreen = () => {
+
+   const dispatch = useDispatch();
 
    const {active:docNew} = useSelector( state => state.notes );
    const {saved} = useSelector( state => state.saved );
@@ -77,7 +80,7 @@ export const NoteScreen = () => {
         >{docValue}
         {/*  placeholder="What happened today" */}
         </textarea>
-        <div className={'saved' + (visible ? ' saved-visible' : '')}><p>Saved Successfully</p></div>
+        <div className={'saved' + (saved ? ' saved-visible' : '')}><p>Saved Successfully</p></div>
 
       {/*   <div className="notes__image">
             <img 
