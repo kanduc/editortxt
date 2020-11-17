@@ -77,12 +77,12 @@ export const NoteScreen = () => {
         placeholder="Escriba Aquí"
         className="notes__textarea"
         name="body"
-        value= {body}
+        value= {docValue}
         onChange={editValue}
         >{docValue}
         {/*  placeholder="What happened today" */}
         </textarea>
-        <div className={'saved' + (saveDocument ? ' saved-visible' : '')}><p>Saved Successfully</p></div>
+        <div className={'saved' + (saveDocument ? ' saved-visible' : '')}><p>{(saveDocument ? 'Guardado' : 'Se esta guardando')}</p></div>
 
       {/*   <div className="notes__image">
             <img 
