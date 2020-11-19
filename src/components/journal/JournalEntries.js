@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { JournalEntry } from './JournalEntry'
 
 export const JournalEntries = () => {
-    const entries=[1];
+/*     const entries=[1]; */
 
-/* const {notes} = useSelector( state => state.notes); */
+const {notes} = useSelector( state => state.notes);
 /* console.log(notes); */
 /* 
 key={value.id} 
@@ -15,10 +15,11 @@ key={value.id}
         <div className="journal__entries">
         <span className="journal__text-history">Historial</span>
             {
-                entries.map((value)=>(
+                notes.map((value,i)=>(
                     <JournalEntry 
-                    key={value} 
-                    value={value}
+                    key={value.id} 
+                    indice={i}
+                 {...value}
                     />
                 ))
 

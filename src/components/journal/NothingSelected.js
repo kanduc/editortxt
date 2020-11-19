@@ -14,6 +14,10 @@ export const NothingSelected = () => {
             Por favor, crea un nuevo documento, pulsando
             <br/>
             el botón <i className="fas fa-plus-square fa-1x"></i>, de la parte superior izquierda.
+            <br />
+            Y si tienes documentos creados pulsa en ellos para 
+            <br/>
+            mostrarlos en la pantalla.
         </p>
             
         <i className="far fa-file-alt fa-4x mt-5"></i>

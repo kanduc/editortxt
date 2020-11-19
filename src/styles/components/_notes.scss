@@ -7,11 +7,12 @@
 
 .notes__appbar{
     align-items: center;
-    background-color: $primary;
+    background-color: lighten($color: $sidebar1, $amount: 15);
     color: white;
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
+    border: 1px solid $light-grey;
 }
 .notes__appbar-format{
     align-items: center;
@@ -69,6 +70,13 @@
 
 }
 .notes__appbar-subcontador{
-border: 2px solid black;
-padding: 10px;
+cursor: pointer;
+background-color: $sidebar1;
+border-radius: 100%;
+padding: 25px;
+margin-right: 10px;
+transition: background-color .3s ease;
+&:hover{
+    background-color: darken($color: $sidebar1, $amount: 10);
+}
 }

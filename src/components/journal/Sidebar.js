@@ -4,6 +4,8 @@ import { startLogout } from '../../actions/auth';
 import { startNewNote } from '../../actions/notes';
 import { NoteScreen } from '../notes/NoteScreen';
 import { JournalEntries } from './JournalEntries';
+import addFile from '../../styles/img/addFile.svg'           
+
 
 export const Sidebar = () => {
 
@@ -49,7 +51,13 @@ dispatch(startLogout());
            className="journal__new-entry"
            onClick={handleAdd}
            >
-           <i className="fas fa-plus-square fa-5x"></i>
+      
+        
+        <img src={addFile} alt=""
+
+            style={{width:80}}
+        />
+       
            <p className="mt-5">
                Crear documento
            </p>
