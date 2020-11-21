@@ -16,7 +16,7 @@ export const NotesLength = () => {
 
     return (
         <div className="notes__length">
-        /*<div>Número de caracteres: {`${bodyLength}`}</div>*/
+        <div>Número de caracteres: {`${bodyLength}`}</div>
                
         </div>
     )
