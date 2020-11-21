@@ -13,7 +13,7 @@ export const JournalEntry = ( {indice,id, date, title, body}) => {
 
     const handleDelete=()=>{
           
-        dispatch(startDeleting(id))
+        //dispatch(startDeleting(id))
     }
 
     const handleEntryClick=()=>{
