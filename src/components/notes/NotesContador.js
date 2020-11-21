@@ -8,7 +8,7 @@ export const NotesContador = () => {
     const {active} = useSelector( state => state.notes );
     const handleDelete=()=>{
       
-        //dispatch(startDeleting(active.id))
+        dispatch(startDeleting(active.id))
     }
     return (
         <div className="notes__app-contador">
