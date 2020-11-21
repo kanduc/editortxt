@@ -12,7 +12,7 @@ export const NotesContador = () => {
     }
     return (
         <div className="notes__app-contador">
-        <div>Contador</div>
+        <div></div>
                <div 
                className="notes__appbar-subcontador"
                title="Eliminar Documento"

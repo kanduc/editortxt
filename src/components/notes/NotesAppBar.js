@@ -8,6 +8,7 @@ export const NotesAppBar = () => {
     const {active} = useSelector( state => state.notes );
     const {title, body} =active
     const date=new Date().getDate();
+    const bodyLength=body.length;
    /*  const state = useSelector( state => state ); */
    /*  console.log(state); */
 
@@ -23,13 +24,12 @@ const handleDelete=()=>{
 
 useEffect(() => {
     dispatch(startSaveNote(active));
-}, [dispatch, title, active])
+}, [dispatch, title, active, bodyLength])
 
-
-
+//className="notes__appbar"
     return (
-        <div className="notes__appbar">
-            <span>{date} de noviembre 2020</span>
+        <div >
+            {/* <span>{date} de noviembre 2020</span> */}
 
             <div>
                {/*  <button 

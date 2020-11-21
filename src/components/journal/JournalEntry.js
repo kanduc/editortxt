@@ -73,18 +73,18 @@ export const JournalEntry = ( {indice,id, date, title, body}) => {
         </div> */}
         <div className="journal__entry-body">
         <p className="journal__entry-title">
-         {title ? `${title.substring(0,20)}` : `Nuevo Documento ${indice+1}`
+         {title ? `${title.substring(0,20)}` : `Documeno sin título ${indice+1}`
          
          
          }
           {/*   Título del archivo {value} */} {/* Sino pone nada por defecto sería Texto 1,2,3, etc */}
         </p>
-        <p className="journal__entry-content">
+       {/*  <p className="journal__entry-content">
         {body && `${body.substring(0,47)}` 
         
         }
-        {/*  El texto que se grabará, solo se verá la parte de inicio .......................................... */} 
-        </p>
+        {  El texto que se grabará, solo se verá la parte de inicio .......................................... } 
+        </p> */}
 
         </div>
         {/* <div className="journal__entry-data-box">

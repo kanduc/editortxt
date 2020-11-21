@@ -5,6 +5,9 @@ import { useForm } from '../../hooks/useForm';
 import { NotesAppBar } from './NotesAppBar';
 import { NotesContador } from './NotesContador';
 import { NotesFormatBar } from './NotesFormatBar';
+import { NotesLength } from './NotesLength';
+import Loader from 'react-loader-spinner';
+
 /* import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -49,6 +52,46 @@ useEffect(() => {
   }
    */
 
+  const [test, setTest] = useState(false);
+  const keyPressHandler = (e) => {
+    
+        setTest(true);
+        console.log(test);
+  
+        
+     
+ 
+  }
+  const keyUpHandler=(e)=>{
+      setTimeout(()=>{
+        setTest(false);
+        console.log(test);
+      },5000)
+    
+  }
+
+
+  useEffect(() => {
+    
+    window.addEventListener('keydown', keyPressHandler);
+    
+        window.addEventListener('keyup', keyUpHandler);
+   
+    
+    return () => {
+      window.removeEventListener('keydown', keyPressHandler);
+      window.removeEventListener('keydown', keyUpHandler);
+    };
+  },[docNew]);
+
+
+
+
+
+ 
+
+
+
 
 
     return (
@@ -57,16 +100,47 @@ useEffect(() => {
         <NotesAppBar />
    {/*      <NotesFormatBar /> */}
         <div className="notes__content">
-
-        <input 
+<div className="notes__appbar">
+<input 
             type="text"
-            placeholder="Algún título"
+            placeholder="Documento sin título"
             className="notes__title-input"
+            autoComplete="off"
             name="title"
             value={ title }
             onChange={handleInputChange}
 
         />
+
+     <span>{(test)? <Loader
+     
+         type="TailSpin"
+         color="#ddd"
+         height={40}
+         width={40}
+         timeout={5000} 
+ 
+      />: "Guardado"}</span>   
+     
+     <div className="notes__search-box">
+ 
+  <div className="notes__search-container">
+    <form>
+      <input 
+      type="text" 
+      placeholder="Buscar en el documento" 
+      className="notes__search-input"
+      name="search"/>
+      <button 
+      type="submit"
+      className="notes__search-btn"
+      ><i className="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+    
+</div>
+       
       
     {/*   <Editor 
      editorState={editorState}
@@ -76,7 +150,7 @@ useEffect(() => {
   toolbarClassName="toolbar-class"
   placeholder="Escriba Aquí"
       /> */}
-
+<div  className="notes__content">
 
         <textarea
        placeholder="Escriba Aquí"
@@ -87,7 +161,7 @@ useEffect(() => {
         >
 
         </textarea>
-
+</div>
       {/*   <div className="notes__image">
             <img 
                 src="https://renzlandscapes.com/wp-content/uploads/2016/02/1a-1024x768.jpg"
@@ -98,6 +172,7 @@ useEffect(() => {
         </div>
    
             <NotesContador />
+            <NotesLength />
 
            {/*  <button
             className="btn btn-danger"
