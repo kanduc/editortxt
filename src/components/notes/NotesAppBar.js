@@ -19,7 +19,7 @@ const handleSave=()=>{
 }
 const handleDelete=()=>{
       
-    dispatch(startDeleting(active.id))
+    //dispatch(startDeleting(active.id))
 }
 
 useEffect(() => {

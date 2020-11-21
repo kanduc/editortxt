@@ -172,7 +172,7 @@ useEffect(() => {
         </div>
    
             <NotesContador />
-            <NotesLength />
+            {/*<NotesLength />*/}
 
            {/*  <button
             className="btn btn-danger"
