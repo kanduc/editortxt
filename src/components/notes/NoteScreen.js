@@ -56,7 +56,7 @@ useEffect(() => {
   const keyPressHandler = (e) => {
     
         setTest(true);
-        console.log(test);
+        /* console.log(test); */
   
         
      
@@ -65,8 +65,8 @@ useEffect(() => {
   const keyUpHandler=(e)=>{
       setTimeout(()=>{
         setTest(false);
-        console.log(test);
-      },5000)
+        /* console.log(test); */
+      },2000)
     
   }
 
@@ -118,7 +118,7 @@ useEffect(() => {
          color="#ddd"
          height={40}
          width={40}
-         timeout={5000} 
+         timeout={2000} 
  
       />: "Guardado"}</span>   
      

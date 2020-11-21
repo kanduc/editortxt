@@ -16,10 +16,10 @@ export const LoginScreen = () => {
     const {loading} = useSelector( state => state.ui );
     const dispatch = useDispatch();
     //Es darle acceso al dispatch, sirve para hacer dispatch de acciones
-
+//operaciones@hotmail.com 12345678
     const [values, handleInputChange]=useForm({
-        email:'operaciones@hotmail.com',
-        password:'12345678',
+        email:'',
+        password:'',
     })
 
     const {email, password}= values;

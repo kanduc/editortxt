@@ -18,10 +18,10 @@ const {msgError} = useSelector( state => state.ui ); //el useSelector devuelve u
 console.log(msgError);
 
     const [values, handleInputChange] = useForm({
-        name:'Jhonny',
-        email:'operaciones@hotmail.com',
-        password:'12345678',
-        password2:'12345678',
+        name:'',
+        email:'',
+        password:'',
+        password2:'',
     });
 
     const {name,email,password,password2}=values;
