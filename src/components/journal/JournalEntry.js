@@ -73,7 +73,7 @@ export const JournalEntry = ( {indice,id, date, title, body}) => {
         </div> */}
         <div className="journal__entry-body">
         <p className="journal__entry-title">
-         {title ? `${title.substring(0,20)}` : `Documeno sin título ${indice+1}`
+         {title ? `${title.substring(0,20)}` : `Documento sin título ${indice+1}`
          
          
          }
