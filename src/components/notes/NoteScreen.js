@@ -124,6 +124,7 @@ useEffect(() => {
      
      <div className="notes__search-box">
  
+ {/*
   <div className="notes__search-container">
     <form>
       <input 
@@ -136,7 +137,7 @@ useEffect(() => {
       className="notes__search-btn"
       ><i className="fa fa-search"></i></button>
     </form>
-  </div>
+  </div>*/}
 </div>
     
 </div>
