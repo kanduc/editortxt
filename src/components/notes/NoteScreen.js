@@ -132,7 +132,7 @@ useEffect(() => {
                  type="ThreeDots"
                  color="#ddd"
                  height={10}
-                 width={50}
+                 width={40}
                  timeout={5000}/>
             </div>
         :   <div className="spinner">
