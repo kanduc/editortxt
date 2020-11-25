@@ -127,11 +127,11 @@ useEffect(() => {
      <div className="spinner">
         {(test)?
             <div className="spinner">
-                <p className="spinner-msg">Guardando  </p>
+                <p className="spinner-msg">Guardando</p>
                 <Loader
                  type="ThreeDots"
                  color="#ddd"
-                 height={20}
+                 height={10}
                  width={50}
                  timeout={5000}/>
             </div>
