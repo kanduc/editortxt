@@ -124,17 +124,22 @@ useEffect(() => {
             onChange={handleInputChange}
 
         />
-
-     <span>{(test)?
-        "Guardando   "   
-        <Loader
-         type="ThreeDots"
-         color="#ddd"
-         height={20}
-         width={50}
-         timeout={5000} 
- 
-      />: "Guardado"}</span>   
+     <div className="spinner">
+        {(test)?
+            <div className="spinner">
+                <p className="spinner-msg">Guardando  </p>
+                <Loader
+                 type="ThreeDots"
+                 color="#ddd"
+                 height={20}
+                 width={50}
+                 timeout={5000}/>
+            </div>
+        :   <div className="spinner">
+                <p className="spinner-msg">Guardado</p>
+            </div>
+        }
+     </div> 
      
      <div className="notes__search-box">
  
