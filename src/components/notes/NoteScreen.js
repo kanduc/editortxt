@@ -113,8 +113,8 @@ useEffect(() => {
         <NotesAppBar />
    {/*      <NotesFormatBar /> */}
         <div className="notes__content">
-<div className="notes__appbar">
-<input 
+    <div className="notes__appbar">
+    <input 
             type="text"
             placeholder="Documento sin título"
             className="notes__title-input"
@@ -126,7 +126,7 @@ useEffect(() => {
         />
 
      <span>{(test)?
-        Guardando   
+        "Guardando   "   
         <Loader
          type="ThreeDots"
          color="#ddd"
