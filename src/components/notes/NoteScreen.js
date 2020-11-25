@@ -176,8 +176,6 @@ useEffect(() => {
         placeholder="Escriba Aquí"
         className="notes__textarea"
         name="body"
-
-        {/*<div className={'saved' + (saveDocument ? ' saved-visible' : '')}><p>{(saveDocument ? 'Se esta guardando' : 'Guardado')}</p></div>*/}
         value= {body}
         onChange={handleInputChange}
         >
