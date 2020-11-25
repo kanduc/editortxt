@@ -1,26 +1,33 @@
-import React, { useEffect, useRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useForm } from '../../hooks/useForm'
-import { NotesAppBar } from './NotesAppBar'
-import { NotesContador } from './NotesContador'
-import { NotesFormatBar } from './NotesFormatBar'
-import { setNewValue, finishSavedValue, setSavedValue } from '../../actions/notes';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { activeNote, startDeleting } from '../../actions/notes';
+import { useForm } from '../../hooks/useForm';
+import { NotesAppBar } from './NotesAppBar';
+import { NotesContador } from './NotesContador';
+import { NotesFormatBar } from './NotesFormatBar';
+import { NotesLength } from './NotesLength';
+import Loader from 'react-loader-spinner';
+//import { setNewValue, finishSavedValue, setSavedValue } from '../../actions/notes';
+
+/* import { EditorState } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import '../../styles/App.css'; */
 
 export const NoteScreen = () => {
 
    const dispatch = useDispatch();
 
    const {active:docNew} = useSelector( state => state.notes );
-   const {saveDocument} = useSelector( state => state.notes );
-   const {timeout} = useSelector( state => state.notes );
-   const {docValue} = useSelector( state => state.notes );
+   //const {saveDocument} = useSelector( state => state.notes );
+   //const {timeout} = useSelector( state => state.notes );
+   //const {docValue} = useSelector( state => state.notes );
    //console.log(saveDocument);
-   console.log(timeout);
-   console.log(docValue);
-
+   //console.log(timeout);
+   //console.log(docValue);
    const  [values, handleInputChange, reset]= useForm(docNew);
 
-   const {body, title}=values;
+   const {body, title,id}=values;
    const activeId = useRef( docNew.id );
 
    useEffect(() => {
@@ -50,37 +57,127 @@ export const NoteScreen = () => {
         return newID   
     }
 
-    //const SaveMessage = ({visible}) => <div className={'saved' + (visible ? ' saved-visible' : '')}><p>Saved Successfully</p></div>
+useEffect(() => {
+   /* console.log(values); */
+   dispatch(activeNote(values.id, {...values}));
+}, [values, dispatch])
+
+   /* const [editorState, setEditorState] = useState(
+    () => EditorState.createEmpty(),
+
+    
+  ); */
+//dispatch(); acción asíncrona de borrar
+  /* const handleDelete=()=>{
+      
+      dispatch(startDeleting(id))
+  }
+   */
+
+  const [test, setTest] = useState(false);
+  const keyPressHandler = (e) => {
+    
+        setTest(true);
+        console.log(test);
+  
+        
+     
+ 
+  }
+  const keyUpHandler=(e)=>{
+      setTimeout(()=>{
+        setTest(false);
+        console.log(test);
+      },5000)
+    
+  }
+
+
+  useEffect(() => {
+    
+    window.addEventListener('keydown', keyPressHandler);
+    
+        window.addEventListener('keyup', keyUpHandler);
+   
+    
+    return () => {
+      window.removeEventListener('keydown', keyPressHandler);
+      window.removeEventListener('keydown', keyUpHandler);
+    };
+  },[docNew]);
 
 
     return (
         <div className="notes__main-content">
         
         <NotesAppBar />
-        <NotesFormatBar />
+   {/*      <NotesFormatBar /> */}
         <div className="notes__content">
-
-        <input 
+<div className="notes__appbar">
+<input 
             type="text"
-            placeholder="Algún título"
+            placeholder="Documento sin título"
             className="notes__title-input"
+            autoComplete="off"
             name="title"
             value={ title }
             onChange={handleInputChange}
 
         />
 
+     <span>{(test)? <Loader
+     
+         type="TailSpin"
+         color="#ddd"
+         height={40}
+         width={40}
+         timeout={5000} 
+ 
+      />: "Guardado"}</span>   
+     
+     <div className="notes__search-box">
+ 
+ {/*
+  <div className="notes__search-container">
+    <form>
+      <input 
+      type="text" 
+      placeholder="Buscar en el documento" 
+      className="notes__search-input"
+      name="search"/>
+      <button 
+      type="submit"
+      className="notes__search-btn"
+      ><i className="fa fa-search"></i></button>
+    </form>
+  </div>*/}
+</div>
+    
+</div>
+       
+      
+    {/*   <Editor 
+     editorState={editorState}
+     onEditorStateChange={setEditorState}
+     wrapperClassName="wrapper-class"
+  editorClassName="editor-class"
+  toolbarClassName="toolbar-class"
+  placeholder="Escriba Aquí"
+      /> */}
+<div  className="notes__content">
+
         <textarea
         placeholder="Escriba Aquí"
         className="notes__textarea"
         name="body"
-        value= {docValue}
-        onChange={editValue}
-        >{docValue}
-        {/*  placeholder="What happened today" */}
-        </textarea>
-        <div className={'saved' + (saveDocument ? ' saved-visible' : '')}><p>{(saveDocument ? 'Se esta guardando' : 'Guardado')}</p></div>
 
+        {/*<div className={'saved' + (saveDocument ? ' saved-visible' : '')}><p>{(saveDocument ? 'Se esta guardando' : 'Guardado')}</p></div>*/}
+        value= {body}
+        onChange={handleInputChange}
+        >
+
+        </textarea>
+</div>
       {/*   <div className="notes__image">
             <img 
                 src="https://renzlandscapes.com/wp-content/uploads/2016/02/1a-1024x768.jpg"
@@ -89,7 +186,16 @@ export const NoteScreen = () => {
         </div> */}
 
         </div>
+   
             <NotesContador />
+            {/*<NotesLength />*/}
+
+           {/*  <button
+            className="btn btn-danger"
+            onClick={handleDelete}
+            >
+                Eliminar
+            </button> */}
         </div>
     )
 }
