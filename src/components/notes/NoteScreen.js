@@ -41,14 +41,14 @@ export const NoteScreen = () => {
 
    const editValue=(e)=>{
         //e.preventDefault();
-        dispatch(setNewValue(resetTimeout(timeout, setTimeout(saveValue, 400)),e.currentTarget.value));
+        //dispatch(setNewValue(resetTimeout(timeout, setTimeout(saveValue, 400)),e.currentTarget.value));
    }
 
    const saveValue = () => {
         console.log("saving")
-        dispatch(setSavedValue())
+        //dispatch(setSavedValue())
         console.log("saved")
-        setTimeout(() => dispatch(finishSavedValue()), 1000)
+        //setTimeout(() => dispatch(finishSavedValue()), 1000)
         
     };
 
