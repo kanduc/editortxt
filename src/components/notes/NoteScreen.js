@@ -125,12 +125,13 @@ useEffect(() => {
 
         />
 
-     <span>{(test)? <Loader
-     
-         type="TailSpin"
+     <span>{(test)?
+        Guardando   
+        <Loader
+         type="ThreeDots"
          color="#ddd"
-         height={40}
-         width={40}
+         height={20}
+         width={50}
          timeout={5000} 
  
       />: "Guardado"}</span>   
