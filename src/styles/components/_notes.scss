@@ -151,13 +151,12 @@ transition: background-color .3s ease;
 }
 
 .spinner > div {
-  display: inline-flex;
+  display: inline;
   justify-content: space-evenly;
   margin: 10px;
 }
 
 .spinner-msg {
-  display: inline-flex;
+  display: inline;
   margin: 10px;
-  padding-inline-start: 20px;
 }
