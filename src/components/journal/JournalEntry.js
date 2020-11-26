@@ -11,6 +11,8 @@ export const JournalEntry = ( {indice,id, date, title, body}) => {
     const dispatch = useDispatch();
  /*    const {active} = useSelector( state => state.notes ); */
 
+    console.log('ID doc: ${id}, ${title}');
+
     const handleDelete=()=>{
           
         dispatch(startDeleting(id))

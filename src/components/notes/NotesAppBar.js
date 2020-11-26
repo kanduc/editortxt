@@ -13,12 +13,12 @@ export const NotesAppBar = () => {
    /*  console.log(state); */
 
 const handleSave=()=>{
-    console.log(active);
+    console.log('notesappbar: ${active}');
     dispatch(startSaveNote(active));
 
 }
 const handleDelete=()=>{
-      
+    console.log(active);
     dispatch(startDeleting(active.id))
 }
 

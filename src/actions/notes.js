@@ -13,7 +13,7 @@ export const startNewNote = () => {
 
 //Traer todo el estado de la aplicación
 const {uid}=getState().auth;//cogeremos el uid para la BD
-/* console.log(uid); */
+ console.log('auditar: ${uid}'); 
 
 const newNote={
     title:'',
