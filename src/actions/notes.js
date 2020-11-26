@@ -12,8 +12,7 @@ export const startNewNote = () => {
     return async (dispatch, getState)=>{
 
 //Traer todo el estado de la aplicación
-const {uid}=getState().auth;//cogeremos el uid para la BD
- console.log('auditar: ${uid}'); 
+const {uid}=getState().auth;//cogeremos el uid para la BD 
 
 const newNote={
     title:'',
@@ -129,6 +128,8 @@ export const startDeleting=(id)=>{
 return async(dispatch, getState)=>{
     const {name} = getState().auth
     const uid=getState().auth.uid;
+    console.log('auditar: '+uid);
+console.log("startdeleting")
 
 await db.doc(`${uid}/journal/notes/${ id}`).delete();
 Swal.fire({
