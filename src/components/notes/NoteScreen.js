@@ -22,7 +22,7 @@ export const NoteScreen = () => {
 
    const  [values, handleInputChange, reset]= useForm(docNew);
 
-   const {body, title,id}=values;
+   const {body, title,id,titleStart}=values;
    const activeId = useRef( docNew.id );
 
    useEffect(() => {
@@ -103,7 +103,7 @@ useEffect(() => {
 <div className="notes__appbar">
 <input 
             type="text"
-            placeholder="Documento sin título"
+            placeholder={titleStart}
             className="notes__title-input"
             autoComplete="off"
             name="title"

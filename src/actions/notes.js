@@ -18,6 +18,7 @@ const {uid}=getState().auth;//cogeremos el uid para la BD
 const newNote={
     title:'',
     body:'',
+    titleStart:'Sin título', 
     date:new Date().getTime(),
 }
 
@@ -114,10 +115,12 @@ export const startDeleting=(id)=>{
 return async(dispatch, getState)=>{
     const {name} = getState().auth
     const uid=getState().auth.uid;
+const nameParsed=name
+const nameSplit=nameParsed.split(" ") 
 
 await db.doc(`${uid}/journal/notes/${ id}`).delete();
 Swal.fire({
-    title: `${name}, ¿Estás seguro de eliminar este documento?`,
+    title: `${nameSplit[0]}, ¿Estás seguro de eliminar este documento?`,
     text: "Recuerda:¡No podrás revertir esto!",
     icon: 'warning',
     showCancelButton: true,
