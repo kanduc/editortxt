@@ -112,15 +112,22 @@ useEffect(() => {
 
         />
 
-     <span>{(test)? <Loader
-     
-         type="TailSpin"
-         color="#ddd"
-         height={40}
-         width={40}
-         timeout={2000} 
- 
-      />: "Guardado"}</span>   
+<div className="spinner">
+        {(test)?
+            <div className="spinner">
+                <p className="spinner-msg">Guardando</p>
+                <Loader
+                 type="ThreeDots"
+                 color="#ddd"
+                 height={8}
+                 width={30}
+                 timeout={5000}/>
+            </div>
+        :   <div className="spinner">
+                <p className="spinner-msg">Guardado</p>
+            </div>
+        }
+    </div>  
      
      <div className="notes__search-box">
  
