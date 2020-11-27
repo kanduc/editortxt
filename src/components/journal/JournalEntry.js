@@ -11,17 +11,17 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
     const dispatch = useDispatch();
  /*    const {active} = useSelector( state => state.notes ); */
 
-    const handleDelete=()=>{
-          
-        dispatch(startDeleting(id))
-    }
+    
 
     const handleEntryClick=()=>{
         dispatch(activeNote(id,{
             date, title, body,titleStart
         }));
     }
-
+    const handleDelete=()=>{
+          handleEntryClick();
+        dispatch(startDeleting(id));
+    }
 
   /*   console.log(documentDate); */
   const dateCreated=documentDate.format('dddd');

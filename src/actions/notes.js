@@ -115,12 +115,21 @@ export const startDeleting=(id)=>{
 return async(dispatch, getState)=>{
     const {name} = getState().auth
     const uid=getState().auth.uid;
+    const {active}=getState().notes;
+    const {title,titleStart}=active
+    const messageDocument=()=>{
+        if(title){
+            return title;
+        }else{
+             return titleStart;
+        }
+     }
 const nameParsed=name
 const nameSplit=nameParsed.split(" ") 
 
 await db.doc(`${uid}/journal/notes/${ id}`).delete();
 Swal.fire({
-    title: `${nameSplit[0]}, ¿Estás seguro de eliminar este documento?`,
+    title: `${nameSplit[0]}, ¿Estás seguro de eliminar ${messageDocument()}?`,
     text: "Recuerda:¡No podrás revertir esto!",
     icon: 'warning',
     showCancelButton: true,
@@ -128,7 +137,9 @@ Swal.fire({
     cancelButtonColor: '#d33',
     confirmButtonText: 'Sí, eliminar ahora'
   }).then((result) => {
+ 
     if (result.isConfirmed) {
+     /*    console.log(result); */
         dispatch(deleteNote(id));
       Swal.fire(
         '¡Eliminado!',
