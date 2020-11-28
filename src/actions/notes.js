@@ -129,18 +129,17 @@ Swal.fire({
         db.doc(`${uid}/journal/notes/${ id}`).delete().then((result) =>{
             console.log("elimino bd");
             console.log(result)
-            console.log(result.json())
-        })
-        .catch(e=>{
-            console.log(e);
-            Swal.fire('Error',"No se pudo eliminar el documento",'error');
-        })
-        dispatch(deleteNote(id));
+            dispatch(deleteNote(id));
       Swal.fire(
         '¡Eliminado!',
         'Tu documento ha sido eliminado',
         'success'
       )
+        })
+        .catch(e=>{
+            console.log(e);
+            Swal.fire('Error',"No se pudo eliminar el documento",'error');
+        })
     }
   })
 
