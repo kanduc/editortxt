@@ -127,7 +127,7 @@ return async(dispatch, getState)=>{
 const nameParsed=name
 const nameSplit=nameParsed.split(" ") 
 
-await db.doc(`${uid}/journal/notes/${ id}`).delete();
+/*await db.doc(`${uid}/journal/notes/${ id}`).delete();*/
 Swal.fire({
     title: `${nameSplit[0]}, ¿Estás seguro de eliminar ${messageDocument()}?`,
     text: "Recuerda:¡No podrás revertir esto!",
@@ -140,6 +140,7 @@ Swal.fire({
  
     if (result.isConfirmed) {
      /*    console.log(result); */
+        db.doc(`${uid}/journal/notes/${ id}`).delete();
         dispatch(deleteNote(id));
       Swal.fire(
         '¡Eliminado!',
