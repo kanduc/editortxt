@@ -125,8 +125,9 @@ Swal.fire({
     confirmButtonText: 'Sí, eliminar ahora'
   }).then((result) => {
     if (result.isConfirmed) {
-        db.doc(`${uid}/journal/notes/80`).delete().then(() =>{
+        db.doc(`${uid}/journal/notes/lk`).delete().then((result) =>{
             console.log("elimino bd");
+            console.log(result)
             dispatch(deleteNote(id));
       Swal.fire(
         '¡Eliminado!',
