@@ -126,11 +126,15 @@ Swal.fire({
   }).then((result) => {
     if (result.isConfirmed) {
         console.log(result.json())
-        db.doc(`${uid}/journal/notes/${ id}`).delete().then((resultBD) =>{
+        db.doc(`${uid}/journal/notes/${ id}`).delete().then((result) =>{
             console.log("elimino bd");
-            console.log(resultBD)
-            console.log(resultBD.json())
-        });
+            console.log(result)
+            console.log(result.json())
+        })
+        .catch(e=>{
+            console.log(e);
+            Swal.fire('Error',"No se pudo eliminar el documento",'error');
+        })
         dispatch(deleteNote(id));
       Swal.fire(
         '¡Eliminado!',
