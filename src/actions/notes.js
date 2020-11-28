@@ -115,7 +115,6 @@ return async(dispatch, getState)=>{
     const {name} = getState().auth
     const uid=getState().auth.uid;
 
-await db.doc(`${uid}/journal/notes/${ id}`).delete();
 Swal.fire({
     title: `${name}, ¿Estás seguro de eliminar este documento?`,
     text: "Recuerda:¡No podrás revertir esto!",
@@ -126,6 +125,7 @@ Swal.fire({
     confirmButtonText: 'Sí, eliminar ahora'
   }).then((result) => {
     if (result.isConfirmed) {
+        await db.doc(`${uid}/journal/notes/${ id}`).delete();
         dispatch(deleteNote(id));
       Swal.fire(
         '¡Eliminado!',
