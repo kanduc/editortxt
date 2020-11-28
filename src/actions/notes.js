@@ -137,20 +137,22 @@ Swal.fire({
     cancelButtonColor: '#d33',
     confirmButtonText: 'Sí, eliminar ahora'
   }).then((result) => {
- 
     if (result.isConfirmed) {
-     /*    console.log(result); */
-        db.doc(`${uid}/journal/notes/${ id}`).delete();
-        dispatch(deleteNote(id));
-      Swal.fire(
-        '¡Eliminado!',
-        'Tu documento ha sido eliminado',
-        'success'
-      )
+        db.doc(`${uid}/journal/notes/${ id}`).delete().then(() =>{
+            console.log("elimino bd");
+            dispatch(deleteNote(id));
+            Swal.fire(
+                '¡Eliminado!',
+                'Tu documento ha sido eliminado',
+                'success'
+            )
+        })
+        .catch(e=>{
+            console.log(e);
+            Swal.fire('Error',"No se pudo eliminar el documento",'error');
+        })
     }
   })
-
-
 
 }
 
