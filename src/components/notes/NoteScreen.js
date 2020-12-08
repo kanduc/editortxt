@@ -84,6 +84,19 @@ useEffect(() => {
     };
   },[docNew]);
 
+  const [valuesSearch, handleSearch, reset]=useForm({
+        search:''
+    })
+
+    const {search}= valuesSearch;
+
+    const handleSearch=(e)=>{
+       console.log("searching")
+       console.log(search)
+       console.log(e.target.value)
+    }
+
+
 
 
 
@@ -131,20 +144,18 @@ useEffect(() => {
      
      <div className="notes__search-box">
  
- {/*
+ 
   <div className="notes__search-container">
-    <form>
-      <input 
+    <input
       type="text" 
       placeholder="Buscar en el documento" 
       className="notes__search-input"
-      name="search"/>
+      name="search"
+      onChange={handleSearch}/>
       <button 
-      type="submit"
       className="notes__search-btn"
       ><i className="fa fa-search"></i></button>
-    </form>
-  </div>*/}
+  </div>
 </div>
     
 </div>
