@@ -112,48 +112,52 @@ export const refreshNote=(id, note)=>({
 })
 
 export const startDeleting=(id)=>{
-return async(dispatch, getState)=>{
-    const {name} = getState().auth
-    const uid=getState().auth.uid;
-    const {active}=getState().notes;
-    const {title,titleStart}=active
-    const messageDocument=()=>{
-        if(title){
-            return title;
-        }else{
-             return titleStart;
+    return async(dispatch, getState)=>{
+        const {name} = getState().auth
+        const uid=getState().auth.uid;
+        const {active}=getState().notes;
+        const {title,titleStart}=active
+        const messageDocument=()=>{
+            if(title){
+                return title;
+            }else{
+                 return titleStart;
+            }
+         }
+    const nameParsed=name
+    const nameSplit=nameParsed.split(" ") 
+    
+    /*await db.doc(`${uid}/journal/notes/${ id}`).delete();*/
+    Swal.fire({
+        title: `${nameSplit[0]}, ¿Estás seguro de eliminar ${messageDocument()}?`,
+        text: "Recuerda:¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar ahora'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            db.doc(`${uid}/journal/notes/${ id}`).delete().then(() =>{
+                console.log("elimino bd");
+                dispatch(deleteNote(id));
+                Swal.fire(
+                    '¡Eliminado!',
+                    'Tu documento ha sido eliminado',
+                    'success'
+                )
+            })
+            .catch(e=>{
+                console.log(e);
+                Swal.fire('Error',"No se pudo eliminar el documento",'error');
+            })
         }
-     }
-const nameParsed=name
-const nameSplit=nameParsed.split(" ") 
-
-await db.doc(`${uid}/journal/notes/${ id}`).delete();
-Swal.fire({
-    title: `${nameSplit[0]}, ¿Estás seguro de eliminar ${messageDocument()}?`,
-    text: "Recuerda:¡No podrás revertir esto!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Sí, eliminar ahora'
-  }).then((result) => {
- 
-    if (result.isConfirmed) {
-     /*    console.log(result); */
-        dispatch(deleteNote(id));
-      Swal.fire(
-        '¡Eliminado!',
-        'Tu documento ha sido eliminado',
-        'success'
-      )
+      })
+    
     }
-  })
-
-
-
-}
-
-}
+    
+    }
+    
 
 export const deleteNote=(id)=>({
     type:types.notesDelete,
