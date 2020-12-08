@@ -84,7 +84,7 @@ useEffect(() => {
     };
   },[docNew]);
 
-  const [valuesSearch, handleSearch]=useForm({
+  const [valuesSearch]=useForm({
         search:''
     })
 
