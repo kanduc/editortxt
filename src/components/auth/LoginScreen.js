@@ -31,11 +31,11 @@ export const LoginScreen = () => {
         console.log(email); 
      /*   dispatch(login(4555,'Juniorjuo')); */
 
-        if(isFormValid()){
+       /* if(isFormValid()){
             console.log(`Formulario correcto`);
             dispatch(startLoginEmailPassword(email, password));
-        }
-       
+        }*/
+      dispatch(startLoginEmailPassword(email, password));
     }
 
 //instalar librería npm i validator
