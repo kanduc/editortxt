@@ -14,7 +14,7 @@ import { RegisterScreen } from './RegisterScreen';
 
 
 export const LoginScreen = () => {
-    const {loading} = useSelector( state => state.ui );
+  const {loading} = useSelector( state => state.ui );
     const dispatch = useDispatch();
     //Es darle acceso al dispatch, sirve para hacer dispatch de acciones
     const {msgError} = useSelector( state => state.ui );
@@ -78,86 +78,64 @@ const handlePrueba=()=>{
             dispatch(startTwitterLogin());
     }
 
-    const isFormValid=()=>{
-        if( !validator.isEmail(email)){
-            dispatch(setError(`El email es incorrecto`));
-           /*  console.log(`El email es incorrecto`); */
-            return false;
-        }else if(password.trim().length ===0){
-          dispatch(setError(`Contraseña es requerida`)); 
-            /* console.log(`Contraseña Inválida. Recuerde que las contraseñas deben de tener de  8 caracteres a más`); */
-            return false;
-
-        }
-        dispatch(removeError()) ; //para que en el redux dev tools el msg error aparezca en null
-        return true;
-    }
-
-
-    return (
-        <>
-        <div className={prueba?"container sign-up-mode":"container "}>
-    
+  return (
+    <>
+    <div className={prueba?"container sign-up-mode":"container "}>
       <div className="forms-container">
         <div className="signin-signup">
           <form className="sign-in-form" onSubmit={handleLogin}>
             <h2 className="title">Iniciar Sesión</h2>
             <div className="input-field">
               <i className="fas fa-user i"></i>
-              <input 
-            type="text"
-            name="email"
-            placeholder="Email"
-            autoComplete="off"
-   
-            value={email}
-            onChange={handleInputChange}
-        />
+              <input type="text"
+                name="email"
+                placeholder="Email"
+                autoComplete="off" 
+                value={email}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock i"></i>
               <input
-        type="password"
-        name="password"
-        placeholder="Tu contraseña"
- 
-        value={password}
-        onChange={handleInputChange}
-         />
+                type="password"
+                name="password"
+                placeholder="Tu contraseña" 
+                value={password}
+                onChange={handleInputChange}
+              />
             </div>
             <input 
-            type="submit" 
-            value="Login" 
-            className="btn solid"
-            disabled={loading}
-             />
+              type="submit" 
+              value="Login" 
+              className="btn solid"
+              disabled={loading}
+            />
             <p className="social-text">Iniciar sesión con redes sociales</p>
             <div className="social-media">
-            <div 
-    className="social-icon facebook"
-    onClick={handleFacebookLogin}
->
+              <div 
+                className="social-icon facebook"
+                onClick={handleFacebookLogin}
+              >
                 <i class="fab fa-facebook-f"></i>
               </div>
               <div 
-    className="social-icon twitter"
-    onClick={handleTwitterLogin}
->
+                className="social-icon twitter"
+                onClick={handleTwitterLogin}
+              >
                 <i class="fab fa-twitter"></i>
               </div>
               <div 
-    className="social-icon google"
-    onClick={handleGoogleLogin}
->
+                className="social-icon google"
+                onClick={handleGoogleLogin}
+              >
                 <i class="fab fa-google"></i>
               </div>
-              {/* <a href="#" class="social-icon">
+              {/*<a href="#" class="social-icon">
                 <i class="fab fa-linkedin-in"></i>
               </a> */}
             </div>
           </form>
-          
-         
         </div>
       </div>
       <div className="panels-container">
@@ -169,22 +147,19 @@ const handlePrueba=()=>{
               freelance, no te arrepentirás de usarlo. ¡Anímate!
             </p>
             <div className="link__border">
-            <Link 
-            onClick={handlePrueba}
-            id="sign-up-btn"
-            className="link"
-            to="/auth/register">Regístrate
-        </Link>
+              <Link 
+                onClick={handlePrueba}
+                id="sign-up-btn"
+                className="link"
+                to="/auth/register">
+                Regístrate
+              </Link>
             </div>
-          
-      
-           
           </div>
           <img src={edit7} className="image" alt="" />
         </div>
-        
       </div>
-      </div>
-        </>
-    )
+    </div>
+  </>
+  )
 }
