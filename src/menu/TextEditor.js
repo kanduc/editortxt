@@ -22,7 +22,7 @@ const TextEditor = () =>{
         else {
           console.log("No está vacio...")
           // const processedHTML = DraftPasteProcessor.processHTML(this.props.content);
-           const contentState = ContentState.createFromBlockArray(convertFromHTML("<p>e32e23ee32<span style='color: rgb(209,72,65);'>eeees</span>z<span style='color: rgb(44,130,201);'>HOLA A TODOS LODE MSS <strong>DWQDWQ</strong></span></p>"));
+           const contentState = ContentState.createFromBlockArray(convertFromHTML(body));
            //move focus to the end. 
            initialState = EditorState.createWithContent(contentState);
            initialState = EditorState.moveFocusToEnd(initialState);
