@@ -8,7 +8,7 @@ const [huawei, sethuawei] = useState({})
 
 
     useEffect(() => {
-      fetch(`http://api.timezonedb.com/v2.1/get-time-zone?key=599V8N2RDZWH&format=json&by=position&lat=-9.189967&lng=-75.015152`)
+      fetch(`https://api.timezonedb.com/v2.1/get-time-zone?key=599V8N2RDZWH&format=json&by=position&lat=-9.189967&lng=-75.015152`)
       .then(res => res.json())
       .then(data => sethuawei( data ));
     }, [])
