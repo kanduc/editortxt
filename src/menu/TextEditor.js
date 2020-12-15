@@ -86,7 +86,7 @@ const TextEditor = () =>{
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
-        onEditorStateChange={onEditorStateChange}
+        {/*onEditorStateChange={onEditorStateChange}*/}
         onContentStateChange={onContentStateChange}
       />
     </div>
