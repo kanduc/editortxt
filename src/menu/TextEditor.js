@@ -33,7 +33,7 @@ const TextEditor = () =>{
     setEditorState(state)
     var data = draftToHtml(convertToRaw(state.getCurrentContent()));
     active.body = data;
-    dispatch(startSaveNote(active.id));
+    dispatch(startSaveNote(active));
     console.log(data);
   };
 
