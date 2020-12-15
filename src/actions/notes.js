@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2'
-import { NoteScreen } from "../components/notes/NoteScreen";
 import { db } from "../firebase/firebase-config";
 import { loadNote } from "../helpers/loadNote";
 import { types } from "../types/types";
