@@ -84,16 +84,16 @@ export const setNote=( notes )=>({
 //ACCION de grabado
 export const startSaveNote=(note)=>{
 return async (dispatch, getState)=>{
-    console.warning("STAR SAVING NOTE");
+    console.log("STAR SAVING NOTE");
     const {uid} = getState().auth;
 
 
 
     const noteToFirestore={ ...note };
-    console.warning(noteToFirestore);
-    console.warning(note.id);
+    console.log(noteToFirestore);
+    console.log(note.id);
     delete noteToFirestore.id; //borró el id del spread
-    console.warning("borro id del spread");
+    console.log("borro id del spread");
 //espera
 await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
 dispatch(refreshNote(note.id, noteToFirestore));

@@ -13,10 +13,10 @@ const TextEditor = () =>{
   const {active} = useSelector( state => state.notes);
   const {title, body} = active
   
-  console.warning("CREANDO TEXT");
+  console.log("CREANDO TEXT");
   console.log(body);
   var initialState;
-  console.warning("VALIDANDO SI BODY ESTA VACIO");
+  console.log("VALIDANDO SI BODY ESTA VACIO");
   if (body=="''") {
     console.log("Esta vacio !!! ")
     initialState = EditorState.createEmpty();
@@ -24,26 +24,26 @@ const TextEditor = () =>{
   else {
     console.log("No está vacio...")
     // const processedHTML = DraftPasteProcessor.processHTML(this.props.content);
-    console.warning("CREA DESDE FROM BLOCK");
+    console.log("CREA DESDE FROM BLOCK");
     const contentState = ContentState.createFromBlockArray(convertFromHTML(body));
     //move focus to the end. 
-    console.warning("CREA CONTENIDO");
+    console.log("CREA CONTENIDO");
     initialState = EditorState.createWithContent(contentState);
-    console.warning("CAMBIA FOCUS");
+    console.log("CAMBIA FOCUS");
     initialState = EditorState.moveFocusToEnd(initialState);
   }
   const [editorState, setEditorState] = useState(() => initialState,);
 
   const onEditorStateChange = (state) => {
-    console.warning("CAMBIA ESTADO");
+    console.log("CAMBIA ESTADO");
     setEditorState(state)
-    console.warning("DIBUJA HTML");
+    console.log("DIBUJA HTML");
     var data = draftToHtml(convertToRaw(state.getCurrentContent()));
-    console.warning("NUEVO BODY");
-    console.warning(data);
+    console.log("NUEVO BODY");
+    console.log(data);
     active.body = data;
-    console.warning("ID DOCUMENTO");
-    console.warning(active.id);
+    console.log("ID DOCUMENTO");
+    console.log(active.id);
     dispatch(startSaveNote(active.id));
     console.log(data);
   };

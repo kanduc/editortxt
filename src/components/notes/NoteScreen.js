@@ -55,7 +55,7 @@ useEffect(() => {
 
   const [test, setTest] = useState(false);
   const keyPressHandler = (e) => {
-    console.warning("keyPressHandler")
+    console.log("keyPressHandler")
     
         setTest(true);
         /* console.log(test); */
