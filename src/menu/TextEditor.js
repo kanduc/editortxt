@@ -14,6 +14,8 @@ const TextEditor = () =>{
   const {title, body} = active
   
   console.log("CREANDO TEXT");
+  console.log("ACTIVO");
+  console.log(active);
   console.log(body);
   var initialState;
   console.log("VALIDANDO SI BODY ESTA VACIO");
@@ -35,6 +37,8 @@ const TextEditor = () =>{
   const [editorState, setEditorState] = useState(() => initialState,);
 
   const onEditorStateChange = (state) => {
+    console.log("TextEditor");
+    console.log("onEditorStateChange");
     console.log("CAMBIA ESTADO");
     setEditorState(state)
     console.log("DIBUJA HTML");
@@ -43,8 +47,10 @@ const TextEditor = () =>{
     console.log(data);
     active.body = data;
     console.log("ID DOCUMENTO");
+    console.log(active);
     console.log(active.id);
-    dispatch(startSaveNote(active.id));
+    console.log("dispatch savenote");
+    dispatch(startSaveNote(active));
     console.log(data);
   };
 

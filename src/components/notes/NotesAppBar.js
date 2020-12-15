@@ -13,7 +13,10 @@ export const NotesAppBar = () => {
    /*  console.log(state); */
 
 const handleSave=()=>{
+    console.log("NOTESAPPBAR");
+    console.log("handleSave");
     console.log(active);
+    console.log("dispatch savenote");
     dispatch(startSaveNote(active));
 
 }
@@ -23,6 +26,10 @@ const handleDelete=()=>{
 }
 
 useEffect(() => {
+    console.log("NOTESAPPBAR");
+    console.log("useEffect");
+    console.log(active);
+    console.log("dispatch savenote");
     dispatch(startSaveNote(active));
 }, [dispatch, title, active, bodyLength])
 
