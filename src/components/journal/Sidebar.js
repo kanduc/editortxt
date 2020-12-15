@@ -78,7 +78,7 @@ dispatch(startLogout());
            </h3>
         {/*    <span>{`${date}-${setMonth()}-${year}`}</span> */}
            <button 
-           className="btn"
+           className="btn1"
            onClick={handleLogout}
            >
                Cerrar Sesión
