@@ -39,10 +39,11 @@ const TextEditor = () =>{
   console.log("initialState");
   console.log(initialState);
 
+  
   const handleEditorChange = (state) => {
     console.log("TextEditor");
     console.log("onEditorStateChange");
-    console.log("CAMBIA ESTADO");
+    /*console.log("CAMBIA ESTADO");
     console.log("state");
     console.log(state);
     setEditorState(state)
@@ -56,7 +57,7 @@ const TextEditor = () =>{
     console.log(active.id);
     console.log("dispatch savenote");
     dispatch(startSaveNote(active));
-    console.log(data);
+    console.log(data);*/
   };
 
    return (

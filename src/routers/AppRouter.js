@@ -36,9 +36,10 @@ const [isLoggedIn, setisLoggedIn] = useState(false)
       //esto pregunta si el objeto user tiene algo, entonces pregunta si existe el uid, si es null se sale de 
       //ciclo if
       if(user?.uid){
+        console.log("dispatch login")
           dispatch(login(user.uid, user.displayName));// mantiene el estado
           setisLoggedIn(true); //ya está autenticado
-
+          console.log("dispatch startLoadingNotes")
          dispatch(startLoadingNotes(user.uid));
       }else{
         setisLoggedIn(false); //deslogueado

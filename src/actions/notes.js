@@ -85,9 +85,6 @@ export const startSaveNote=(note)=>{
 return async (dispatch, getState)=>{
     console.log("STAR SAVING NOTE");
     const {uid} = getState().auth;
-
-
-
     const noteToFirestore={ ...note };
     console.log(noteToFirestore);
     console.log(note.id);

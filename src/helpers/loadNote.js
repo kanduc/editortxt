@@ -3,7 +3,7 @@ import { db } from "../firebase/firebase-config"
 
 //se necesitará el uid para cargar el documento nuevo
 export const loadNote = async (uid) => {
-
+  console.log("loadNote")
 
   const docSnap= await db.collection(`${uid}/journal/notes`).orderBy("date","desc").get();//retorna una promesa;
   const documents=[];
