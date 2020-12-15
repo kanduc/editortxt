@@ -63,12 +63,12 @@ const TextEditor = () =>{
     console.log("TextEditor");
     console.log("onContentStateChange");
     console.log("CAMBIA ESTADO");
-    console.log("state");
-    console.log(state);
-    setEditorState(state)
     console.log("DIBUJA HTML");
     var data = draftToHtml(convertToRaw(state.getCurrentContent()));
     console.log("NUEVO BODY");
+    console.log("state");
+    console.log(state);
+    setEditorState(state)
     console.log(data);
     active.body = data;
     console.log("ID DOCUMENTO");
@@ -86,7 +86,6 @@ const TextEditor = () =>{
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
-        {/*onEditorStateChange={onEditorStateChange}*/}
         onContentStateChange={onContentStateChange}
       />
     </div>
