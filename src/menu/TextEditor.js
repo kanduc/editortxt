@@ -70,4 +70,4 @@ const TextEditor = () =>{
     </div>
   );
 }
-export TextEditor;
+export { TextEditor };

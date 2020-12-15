@@ -7,7 +7,7 @@ import { NotesContador } from './NotesContador';
 /*import { NotesFormatBar } from './NotesFormatBar';*/
 import { NotesLength } from './NotesLength';
 import Loader from 'react-loader-spinner';
-import TextEditor from "../../menu/TextEditor";
+import { TextEditor } from "../../menu/TextEditor";
 
 /* import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
