@@ -38,7 +38,7 @@ const TextEditor = () =>{
     //initialState = EditorState.createWithContent(contentState);
     //console.log("CAMBIA FOCUS");
     //initialState = EditorState.moveFocusToEnd(initialState);
-    const neweditorState = EditorState.push(editorState,ContentState.createFromBlockArray(convertFromHTML(body));
+    const neweditorState = EditorState.push(editorState,ContentState.createFromBlockArray(convertFromHTML(body)));
     setEditorState(neweditorState);
   }
   //const [editorState, setEditorState] = useState(() => initialState,);
