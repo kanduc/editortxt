@@ -25,6 +25,7 @@ switch (action.type) {
             notes:[...state.notes,action.payload]
         }
     case types.notesLoad:
+        console.log("notesLoad")
        /*  console.log(action.payload); */
         return{
             ...state,

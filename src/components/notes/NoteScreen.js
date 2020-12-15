@@ -19,7 +19,6 @@ export const NoteScreen = () => {
    const dispatch = useDispatch();
 
     const {active:docNew} = useSelector( state => state.notes );
-    /* console.log(docNew); */
 
    const  [values, handleInputChange, reset]= useForm(docNew);
 
@@ -27,17 +26,20 @@ export const NoteScreen = () => {
    const activeId = useRef( docNew.id );
 
    useEffect(() => {
+    console.log("useEffect NoteScreen")
       //ejecutar la acción si o solo sí el id es diferente
-if(docNew.id!==activeId.current){
-    reset(docNew);
-    activeId.current=docNew.id
-}
+    if(docNew.id!==activeId.current){
+      console.log("id diferente NoteScreen")
+      reset(docNew);
+      activeId.current=docNew.id
+    }
 
    }, [docNew, reset])
 
 
 useEffect(() => {
-   /* console.log(values); */
+   console.log(values);
+   console.log("dispatch activeNote")
    dispatch(activeNote(values.id, {...values}));
 }, [values, dispatch])
 

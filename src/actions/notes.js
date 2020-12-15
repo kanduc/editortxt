@@ -10,34 +10,31 @@ export const startNewNote = () => {
 
     return async (dispatch, getState)=>{
 
-//Traer todo el estado de la aplicación
-const {uid}=getState().auth;//cogeremos el uid para la BD
-/* console.log(uid); */
+        //Traer todo el estado de la aplicación
+        const {uid}=getState().auth;//cogeremos el uid para la BD
+        /* console.log(uid); */
 
-const newNote={
-    title:'',
-    body:'',
-    titleStart:'Sin título', 
-    date:new Date().getTime(),
-}
-
-
-//Esto es una promesa por eso se hace el async y await
-//crear documento db.collection().add() // es como insert in to
-
-//devuelve una promesa, aquí chicos podemos usar el .then o mejor el async/ await
-const doc = await db.collection(`${uid}/journal/notes`).add(newNote);
-/* console.log(doc); */
-
-dispatch(activeNote(doc.id, newNote));
-dispatch(addNewNote(doc.id, newNote));
+        const newNote={
+            title:'',
+            body:'',
+            titleStart:'Sin título', 
+            date:new Date().getTime(),
+        }
 
 
-/* console.log(doc); */
+        //Esto es una promesa por eso se hace el async y await
+        //crear documento db.collection().add() // es como insert in to
+
+        //devuelve una promesa, aquí chicos podemos usar el .then o mejor el async/ await
+        const doc = await db.collection(`${uid}/journal/notes`).add(newNote);
+        /* console.log(doc); */
+
+        dispatch(activeNote(doc.id, newNote));
+        dispatch(addNewNote(doc.id, newNote));
 
 
+        /* console.log(doc); */
     }
-  
 }
 
 
@@ -54,15 +51,16 @@ export const activeNote=(id, note)=>({
 });
 
 export const addNewNote=(id, note)=>({
-type:types.notesAddNew,
-payload:{
-    id,
-    ...note,
-}
+    type:types.notesAddNew,
+    payload:{
+        id,
+        ...note,
+    }
 })
 
 export const startLoadingNotes=(uid)=>{
     return async (dispatch)=>{
+        console.log("startLoadingNotes")
         const text=await loadNote(uid);
         dispatch(setNote(text));
     }
