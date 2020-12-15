@@ -16,6 +16,8 @@ import '../../styles/App.css'; */
 
 export const NoteScreen = () => {
 
+  console.log("creando NoteScreen");
+
    const dispatch = useDispatch();
 
     const {active:docNew} = useSelector( state => state.notes );
@@ -32,13 +34,12 @@ export const NoteScreen = () => {
       console.log("id diferente NoteScreen")
       reset(docNew);
       activeId.current=docNew.id
+      console.log("valor reseteado")
     }
 
    }, [docNew, reset])
 
-
 useEffect(() => {
-   console.log(values);
    console.log("dispatch activeNote")
    dispatch(activeNote(values.id, {...values}));
 }, [values, dispatch])
@@ -46,7 +47,6 @@ useEffect(() => {
   const [test, setTest] = useState(false);
   const keyPressHandler = (e) => {
     console.log("keyPressHandler")
-    
         setTest(true);
         /* console.log(test); */
   

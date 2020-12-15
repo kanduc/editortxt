@@ -19,7 +19,7 @@ const TextEditor = () =>{
   console.log(body);
   var initialState;
   console.log("VALIDANDO SI BODY ESTA VACIO");
-  if (body=="''") {
+  if (body==="''") {
     console.log("Esta vacio !!! ")
     initialState = EditorState.createEmpty();
   }
@@ -40,7 +40,7 @@ const TextEditor = () =>{
   console.log(initialState);
   
   const handleEditorChange = (state) => {
-    console.log("TextEditor");
+    /*console.log("TextEditor");
     console.log("onEditorStateChange");
     console.log("CAMBIA ESTADO");
     console.log("state");
@@ -54,7 +54,7 @@ const TextEditor = () =>{
     console.log("ID DOCUMENTO");
     console.log(active);
     console.log(active.id);
-    /*console.log("dispatch savenote");
+    console.log("dispatch savenote");
     dispatch(startSaveNote(active));
     console.log(data);*/
   };
@@ -66,9 +66,8 @@ const TextEditor = () =>{
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
-        onEditorStateChange={handleEditorChange}
       />
     </div>
   );
 }
-export default TextEditor;
+export TextEditor;

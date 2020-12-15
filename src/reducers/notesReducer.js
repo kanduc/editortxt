@@ -12,6 +12,7 @@ export const notesReducer=(state=initialState,action)=>{
 switch (action.type) {
 
     case types.notesActive:
+    console.log("notesActive")
         return {
             ...state,
             active:{
