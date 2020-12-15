@@ -14,6 +14,8 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
     
 
     const handleEntryClick=()=>{
+        console.log("handleEntryClick");
+        console.log(id);
         dispatch(activeNote(id,{
             date, title, body,titleStart
         }));

@@ -39,8 +39,6 @@ const TextEditor = () =>{
   console.log("initialState");
   console.log(initialState);
 
-  setEditorState(initialState);
-
   const onEditorStateChange = (state) => {
     console.log("TextEditor");
     console.log("onEditorStateChange");
