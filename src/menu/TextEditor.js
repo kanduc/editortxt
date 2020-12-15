@@ -13,16 +13,19 @@ const TextEditor = () =>{
   const {active} = useSelector( state => state.notes);
   const {title, body} = active
   
-  let initialState;
-        if (body.content) {
-           // const processedHTML = DraftPasteProcessor.processHTML(this.props.content);
-            const contentState = ContentState.createFromBlockArray(body.content);
-            //move focus to the end. 
-            initialState = EditorState.createWithContent(contentState);
-            initialState = EditorState.moveFocusToEnd(initialState);
+  console.log(body);
+  var initialState;
+        if (body=="''") {
+          console.log("Esta vacio !!! ")
+          initialState = EditorState.createEmpty();
         }
         else {
-            initialState = EditorState.createEmpty();
+          console.log("No está vacio...")
+          // const processedHTML = DraftPasteProcessor.processHTML(this.props.content);
+           const contentState = ContentState.createFromBlockArray(convertFromHTML(body));
+           //move focus to the end. 
+           initialState = EditorState.createWithContent(contentState);
+           initialState = EditorState.moveFocusToEnd(initialState);
         }
   const [editorState, setEditorState] = useState(() => initialState,);
 
