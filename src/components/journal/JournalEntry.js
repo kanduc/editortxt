@@ -9,9 +9,6 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
 
     const documentDate=moment(date);
     const dispatch = useDispatch();
-    const {active} = useSelector( state => state.notes );
-
-    
 
     const handleEntryClick=()=>{
         console.log("handleEntryClick");

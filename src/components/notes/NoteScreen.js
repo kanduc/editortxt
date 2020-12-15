@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { activeNote, startDeleting } from '../../actions/notes';
+import { activeNote } from '../../actions/notes';
 import { useForm } from '../../hooks/useForm';
 /*import { NotesAppBar } from './NotesAppBar';*/
 import { NotesContador } from './NotesContador';
-import { NotesFormatBar } from './NotesFormatBar';
+/*import { NotesFormatBar } from './NotesFormatBar';*/
 import { NotesLength } from './NotesLength';
 import Loader from 'react-loader-spinner';
 import TextEditor from "../../menu/TextEditor";
@@ -40,18 +40,6 @@ useEffect(() => {
    /* console.log(values); */
    dispatch(activeNote(values.id, {...values}));
 }, [values, dispatch])
-
-   /* const [editorState, setEditorState] = useState(
-    () => EditorState.createEmpty(),
-
-    
-  ); */
-//dispatch(); acción asíncrona de borrar
-  /* const handleDelete=()=>{
-      
-      dispatch(startDeleting(id))
-  }
-   */
 
   const [test, setTest] = useState(false);
   const keyPressHandler = (e) => {

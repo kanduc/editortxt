@@ -48,27 +48,6 @@ const TextEditor = () =>{
     setEditorState(state)
     console.log("DIBUJA HTML");
     var data = draftToHtml(convertToRaw(state.getCurrentContent()));
-    setConvertedContent(data);
-    console.log("NUEVO BODY");
-    console.log(data);
-    active.body = data;
-    console.log("ID DOCUMENTO");
-    console.log(active);
-    console.log(active.id);
-    console.log("dispatch savenote");
-    dispatch(startSaveNote(active));
-    console.log(data);
-  };
-
-  const onContentStateChange = (state) => {
-    console.log("TextEditor");
-    console.log("onContentStateChange");
-    console.log("CAMBIA ESTADO");
-    console.log("DIBUJA HTML");
-    console.log("state");
-    console.log(state);
-    setEditorState(state)
-    var data = draftToHtml(convertToRaw(state.getCurrentContent()));
     console.log("NUEVO BODY");
     console.log(data);
     active.body = data;

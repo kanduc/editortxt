@@ -12,6 +12,7 @@ export const NotesAppBar = () => {
    /*  const state = useSelector( state => state ); */
    /*  console.log(state); */
 
+/*
 const handleSave=()=>{
     console.log("NOTESAPPBAR");
     console.log("handleSave");
@@ -19,11 +20,12 @@ const handleSave=()=>{
     console.log("dispatch savenote");
     dispatch(startSaveNote(active));
 
-}
+}*/
+/*
 const handleDelete=()=>{
       
     dispatch(startDeleting(active.id))
-}
+}*/
 
 useEffect(() => {
     console.log("NOTESAPPBAR");
