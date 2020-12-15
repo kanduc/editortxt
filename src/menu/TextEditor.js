@@ -4,7 +4,6 @@ import { EditorState, convertToRaw,ContentState, convertFromHTML} from "draft-js
 import { useDispatch, useSelector } from 'react-redux';
 import { startSaveNote } from '../actions/notes';
 
-
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 
@@ -19,25 +18,33 @@ const TextEditor = () =>{
   console.log(body);
   var initialState;
   console.log("VALIDANDO SI BODY ESTA VACIO");
-  if (body==="''") {
-    console.log("Esta vacio !!! ")
-    initialState = EditorState.createEmpty();
-  }
-  else {
-    console.log("No está vacio...")
-    // const processedHTML = DraftPasteProcessor.processHTML(this.props.content);
-    console.log("CREA DESDE FROM BLOCK");
-    const contentState = ContentState.createFromBlockArray(convertFromHTML(body));
-    //move focus to the end. 
-    console.log("CREA CONTENIDO");
-    initialState = EditorState.createWithContent(contentState);
-    console.log("CAMBIA FOCUS");
-    initialState = EditorState.moveFocusToEnd(initialState);
-  }
+  initialState = EditorState.createEmpty();
   const [editorState, setEditorState] = useState(() => initialState,);
 
   console.log("initialState");
   console.log(initialState);
+  
+  if (body==="") {
+    //console.log("Esta vacio !!! ")
+    //initialState = EditorState.createEmpty();
+  }
+  else {
+    console.log("No está vacio...")
+    // const processedHTML = DraftPasteProcessor.processHTML(this.props.content);
+    //console.log("CREA DESDE FROM BLOCK");
+    //const contentState = ContentState.createFromBlockArray(convertFromHTML(body));
+    //move focus to the end. 
+    //console.log("CREA CONTENIDO");
+    //initialState = EditorState.createWithContent(contentState);
+    //console.log("CAMBIA FOCUS");
+    //initialState = EditorState.moveFocusToEnd(initialState);
+    const neweditorState = EditorState.push(editorState,ContentState.createFromBlockArray(convertFromHTML(body));
+    setEditorState(neweditorState);
+  }
+  //const [editorState, setEditorState] = useState(() => initialState,);
+
+  //console.log("initialState");
+  //console.log(initialState);
   
   const handleEditorChange = (state) => {
     /*console.log("TextEditor");
