@@ -36,10 +36,17 @@ const TextEditor = () =>{
   }
   const [editorState, setEditorState] = useState(() => initialState,);
 
+  console.log("initialState");
+  console.log(initialState);
+
+  setEditorState(initialState);
+
   const onEditorStateChange = (state) => {
     console.log("TextEditor");
     console.log("onEditorStateChange");
     console.log("CAMBIA ESTADO");
+    console.log("state");
+    console.log(state);
     setEditorState(state)
     console.log("DIBUJA HTML");
     var data = draftToHtml(convertToRaw(state.getCurrentContent()));
