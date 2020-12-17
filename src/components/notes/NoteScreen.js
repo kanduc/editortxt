@@ -156,15 +156,15 @@ export const NoteScreen = () => {
       /> */}
 <div  className="notes__content">
 
-      { /*<textarea
+      <textarea
        placeholder="Escriba Aquí"
         className="notes__textarea"
         name="body"
         value= {body}
         onChange={handleInputChange} />
-        */
-      }
-      <TextEditorR />
+      
+      
+      
 
 </div>
       {/*   <div className="notes__image">

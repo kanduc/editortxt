@@ -17,12 +17,12 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
         console.log("handleEntryClick");
         console.log("id "+id)
         console.log("body "+body)
-        dispatch(getNote(id));
+        //dispatch(getNote(id));
 
-        /*
+        
         dispatch(activeNote(id,{
             date, title, body,titleStart
-        }));*/
+        }));
     }
     const handleDelete=()=>{
           handleEntryClick();
