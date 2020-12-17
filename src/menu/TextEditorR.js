@@ -1,7 +1,6 @@
 import React, { useState , useRef , useEffect} from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { startSaveNote } from '../actions/notes';
-import { textForm } from '../hooks/textForm';
 import ReactQuill from "react-quill";
 import EditorToolBar, { modules, formats } from "./EditorToolBar";
 import "react-quill/dist/quill.snow.css";
