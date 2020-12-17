@@ -22,7 +22,7 @@ const TextEditorR = () =>{
 		console.log(text)
 		active.body = text;
 	    setStateEditor({ text });
-	    //dispatch(startSaveNote(active));
+	    dispatch(startSaveNote(active));
 	};
 	return (
 	    <div className="text-editor">
