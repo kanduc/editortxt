@@ -9,71 +9,68 @@ import { types } from "../types/types";
 export const startNewNote = () => {
 
     return async (dispatch, getState)=>{
-
-//Traer todo el estado de la aplicación
-const {uid}=getState().auth;//cogeremos el uid para la BD
-/* console.log(uid); */
-
-const newNote={
-    title:'',
-    body:'',
-    titleStart:'Sin título', 
-    date:new Date().getTime(),
-}
-
-
-//Esto es una promesa por eso se hace el async y await
-//crear documento db.collection().add() // es como insert in to
-
-//devuelve una promesa, aquí chicos podemos usar el .then o mejor el async/ await
-const doc = await db.collection(`${uid}/journal/notes`).add(newNote);
-/* console.log(doc); */
-
-dispatch(activeNote(doc.id, newNote));
-dispatch(addNewNote(doc.id, newNote));
-
-
-/* console.log(doc); */
-
-
+        console.log("START NEW NOTE");
+        //Traer todo el estado de la aplicación
+        const {uid}=getState().auth;//cogeremos el uid para la BD
+        /* console.log(uid); */
+        const newNote={
+            title:'',
+            body:'',
+            titleStart:'Sin título', 
+            date:new Date().getTime(),
+        }
+        //Esto es una promesa por eso se hace el async y await
+        //crear documento db.collection().add() // es como insert in to
+        //devuelve una promesa, aquí chicos podemos usar el .then o mejor el async/ await
+        const doc = await db.collection(`${uid}/journal/notes`).add(newNote);
+        /* console.log(doc); */
+        dispatch(activeNote(doc.id, newNote));
+        dispatch(addNewNote(doc.id, newNote));
+        /* console.log(doc); */
     }
   
 }
 
 
 
-export const activeNote=(id, note)=>({
+export const getNote = (id) => {
+    return async (dispatch, getState) => {
+        console.log("get note")
+        const {uid}=getState().auth;
+        const doc= await db.doc(`${uid}/journal/notes/${ id}`).get();
+        console.log("doc");
+        console.log(doc.id)
+        console.log(doc.data())
+        dispatch(activeNote(doc.id,doc.data()));
+    }
+}
 
+
+export const activeNote=(id, note)=>({
     type: types.notesActive,
     payload:{
         id,
         ...note
-
     }
-
 });
 
 export const addNewNote=(id, note)=>({
-type:types.notesAddNew,
-payload:{
-    id,
-    ...note,
-}
+    type:types.notesAddNew,
+    payload:{
+        id,
+        ...note,
+    }
 })
 
 export const startLoadingNotes=(uid)=>{
     return async (dispatch)=>{
+        console.log("START LOADING NOTES");
         const text=await loadNote(uid);
         dispatch(setNote(text));
     }
 }
 
-
-
-
-
 export const setNote=( notes )=>({
-
     type: types.notesLoad,
     payload:notes,
 
@@ -82,19 +79,21 @@ export const setNote=( notes )=>({
 
 //ACCION de grabado
 export const startSaveNote=(note)=>{
-return async (dispatch, getState)=>{
-
-    const {uid} = getState().auth;
-
-
-
-    const noteToFirestore={ ...note };
-    delete noteToFirestore.id; //borró el id del spread
-//espera
-await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
-dispatch(refreshNote(note.id, noteToFirestore));
-/* Swal.fire('Guardado', `Tu documento ha sido guardado`, 'success'); */
-}
+    return async (dispatch, getState)=>{
+        console.log("START SAVE NOTE");
+        const {uid} = getState().auth;
+        const noteToFirestore={ ...note };
+        delete noteToFirestore.id; //borró el id del spread
+        console.log("nota a guardar")
+        console.log(noteToFirestore)
+        //espera
+        //await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
+        db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore).then(() =>{
+            console.log("update")
+            dispatch(refreshNote(note.id, noteToFirestore));
+        })
+        /* Swal.fire('Guardado', `Tu documento ha sido guardado`, 'success'); */
+    }
 
 }
 
@@ -112,6 +111,7 @@ export const refreshNote=(id, note)=>({
 
 export const startDeleting=(id)=>{
     return async(dispatch, getState)=>{
+        console.log("START DELETING");
         const {name} = getState().auth
         const uid=getState().auth.uid;
         const {active}=getState().notes;
@@ -123,44 +123,40 @@ export const startDeleting=(id)=>{
                  return titleStart;
             }
          }
-    const nameParsed=name
-    const nameSplit=nameParsed.split(" ") 
-    
-    /*await db.doc(`${uid}/journal/notes/${ id}`).delete();*/
-    Swal.fire({
-        title: `${nameSplit[0]}, ¿Estás seguro de eliminar ${messageDocument()}?`,
-        text: "Recuerda:¡No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, eliminar ahora'
-      }).then((result) => {
-        if (result.isConfirmed) {
-            db.doc(`${uid}/journal/notes/${ id}`).delete().then(() =>{
-                console.log("elimino bd");
-                dispatch(deleteNote(id));
-                Swal.fire(
-                    '¡Eliminado!',
-                    'Tu documento ha sido eliminado',
-                    'success'
-                )
-            })
-            .catch(e=>{
-                console.log(e);
-                Swal.fire('Error',"No se pudo eliminar el documento",'error');
-            })
-        }
-      })
-    
+        const nameParsed=name
+        const nameSplit=nameParsed.split(" ") 
+        
+        /*await db.doc(`${uid}/journal/notes/${ id}`).delete();*/
+        Swal.fire({
+            title: `${nameSplit[0]}, ¿Estás seguro de eliminar ${messageDocument()}?`,
+            text: "Recuerda:¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar ahora'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                db.doc(`${uid}/journal/notes/${ id}`).delete().then(() =>{
+                    console.log("elimino bd");
+                    dispatch(deleteNote(id));
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'Tu documento ha sido eliminado',
+                        'success'
+                    )
+                })
+                .catch(e=>{
+                    console.log(e);
+                    Swal.fire('Error',"No se pudo eliminar el documento",'error');
+                })
+            }
+        })
     }
-    
-    }
+}
     
 
 export const deleteNote=(id)=>({
     type:types.notesDelete,
     payload:id
 })
-
-

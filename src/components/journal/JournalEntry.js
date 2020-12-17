@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
-import { activeNote, startDeleting } from '../../actions/notes';
+import { activeNote, startDeleting, getNote } from '../../actions/notes';
 import basura from '../../styles/img/basura.svg'
 
 /*{value}*/
@@ -14,9 +14,15 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
     
 
     const handleEntryClick=()=>{
+        console.log("handleEntryClick");
+        console.log("id "+id)
+        console.log("body "+body)
+        dispatch(getNote(id));
+
+        /*
         dispatch(activeNote(id,{
             date, title, body,titleStart
-        }));
+        }));*/
     }
     const handleDelete=()=>{
           handleEntryClick();

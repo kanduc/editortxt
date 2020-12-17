@@ -32,6 +32,9 @@ switch (action.type) {
         };
 
     case types.notesUpdated:
+        console.log("notesUpdated");
+        console.log(action.payload.id)
+        console.log(action.payload.note)
         return {
             ...state,
             notes: state.notes.map(

@@ -7,7 +7,7 @@ import { NotesContador } from './NotesContador';
 /*import { NotesFormatBar } from './NotesFormatBar';*/
 import { NotesLength } from './NotesLength';
 import Loader from 'react-loader-spinner';
-import TextEditor from "../../menu/TextEditor";
+import TextEditorR from "../../menu/TextEditorR";
 
 /* import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -22,24 +22,30 @@ export const NoteScreen = () => {
     /* console.log(docNew); */
 
    const  [values, handleInputChange, reset]= useForm(docNew);
+   console.log("datos")
+   console.log(values)
 
    const {body, title,id,titleStart}=values;
    const activeId = useRef( docNew.id );
 
    useEffect(() => {
+    console.log("useEffect id diferente")
       //ejecutar la acción si o solo sí el id es diferente
-if(docNew.id!==activeId.current){
-    reset(docNew);
-    activeId.current=docNew.id
-}
+    if(docNew.id!==activeId.current){
+      console.log("id es diferente-reset")
+      reset(docNew);
+      activeId.current=docNew.id
+      console.log(activeId.current)
+    }
 
    }, [docNew, reset])
 
 
-useEffect(() => {
-   /* console.log(values); */
-   dispatch(activeNote(values.id, {...values}));
-}, [values, dispatch])
+  useEffect(() => {
+    console.log("dispatch active note")
+     /* console.log(values); */
+     dispatch(activeNote(values.id, {...values}));
+  }, [values, dispatch])
 
    /* const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),
@@ -57,11 +63,7 @@ useEffect(() => {
   const keyPressHandler = (e) => {
     
         setTest(true);
-        /* console.log(test); */
-  
-        
-     
- 
+        /* console.log(test); */    
   }
   const keyUpHandler=(e)=>{
       setTimeout(()=>{
@@ -72,7 +74,9 @@ useEffect(() => {
   }
 
 
+
   useEffect(() => {
+    console.log("useEffect windoweventlistener")
     
     window.addEventListener('keydown', keyPressHandler);
     
@@ -160,7 +164,7 @@ useEffect(() => {
         onChange={handleInputChange} />
         */
       }
-      <TextEditor />
+      <TextEditorR />
 
 </div>
       {/*   <div className="notes__image">

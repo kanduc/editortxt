@@ -12,7 +12,7 @@ const TextEditor = () =>{
   const dispatch = useDispatch();
   const {active} = useSelector( state => state.notes);
   const {title, body} = active
-  
+  console.log("body")
   console.log(body);
   var initialState;
         if (body=="''") {
