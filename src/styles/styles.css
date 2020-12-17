@@ -436,3 +436,10 @@ bottom: 20px;
     left: 50%;
   }
 }
+.text-editor {
+  width: 1086px;
+  margin: 0 auto;
+}
+.ql-editor {
+  min-height: 100px;
+}

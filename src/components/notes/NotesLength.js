@@ -5,14 +5,9 @@ export const NotesLength = () => {
 
     const {active} = useSelector( state => state.notes );
     const {body}=active;
+    console.log("contador body")
+    console.log (body);
     const bodyLength=body.length;
-
-
- 
-
-
-
-
 
     return (
         <div className="notes__length">
