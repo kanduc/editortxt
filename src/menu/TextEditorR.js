@@ -19,7 +19,7 @@ const TextEditorR = () =>{
 	//const [stateEditor, setStateEditor] = useState(() =>  ,);
 	const [stateEditor, setStateEditor] = useState({ value: body });
 	console.log("inicio text")
-	console.log(stateEditor.text)
+	console.log(stateEditor.value)
 	const activeId = useRef( docNew.id );
 	
 	/*
