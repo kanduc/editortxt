@@ -13,21 +13,23 @@ const TextEditorR = () =>{
 	const {active} = useSelector( state => state.notes);
 	const {title, body} = active
 	console.log("body text "+body);
-	const [stateEditor, setStateEditor] = useState(() => body ,);
-	const handleChange = value => {
+	//const [stateEditor, setStateEditor] = useState(() =>  ,);
+	const [stateEditor, setStateEditor] = React.useState({ text: body });
+	console.log("inicio text")
+	console.log(stateEditor.text)
+	const handleChange = text => {
 		console.log("handleChange");
-		console.log(value)
-		active.body = value;
-	    setStateEditor({ value });
-	    dispatch(startSaveNote(active));
+		console.log(text)
+		active.body = text;
+	    setStateEditor({ text });
+	    //dispatch(startSaveNote(active));
 	};
 	return (
 	    <div className="text-editor">
 	      <EditorToolBar />
 	      <ReactQuill
 	        theme="snow"
-	        value={body}
-	        name="body"
+	        value={stateEditor.text}
 	        onChange={handleChange}
 	        placeholder={"Escriba algo..."}
 	        modules={modules}
