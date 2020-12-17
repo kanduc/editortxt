@@ -22,14 +22,15 @@ const TextEditorR = () =>{
 	console.log(stateEditor.value)
 	const activeId = useRef( docNew.id );
 	
-	/*
+	console.log("activeId "+activeId);
 	useEffect(() => {
 	   //ejecutar la acción si o solo sí el id es diferente
-		if(docNew.id!==activeId.current){
-		    setStateEditor({ value : docNew.body });
-		    activeId.current=docNew.id
-		}
-	}, [docNew])*/
+	   if(docNew.id!==activeId.current){
+ 	    console.log("diferente")
+	    setStateEditor({ value : docNew.body });
+	    activeId.current=docNew.id
+	  }
+	}, [docNew])
 	
 	const handleChange = text => {
 		console.log("handleChange");
