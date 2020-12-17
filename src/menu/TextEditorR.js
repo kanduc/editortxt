@@ -34,9 +34,9 @@ const TextEditorR = () =>{
 	const handleChange = text => {
 		console.log("handleChange");
 		console.log(text)
-		active.body = text;
+		docNew.body = text;
 	    setStateEditor({ value : text });
-	    dispatch(startSaveNote(active));
+	    dispatch(startSaveNote(docNew));
 	};
 	return (
 	    <div className="text-editor">
@@ -44,7 +44,7 @@ const TextEditorR = () =>{
 	      <ReactQuill
 	        theme="snow"
 	        value={stateEditor.value}
-	        onChange={handleTextChange}
+	        onChange={handleChange}
 	        placeholder={"Escriba algo..."}
 	        modules={modules}
 	        formats={formats}
