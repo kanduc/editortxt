@@ -4,7 +4,7 @@ import { startSaveNote } from '../actions/notes';
 import ReactQuill from "react-quill";
 import EditorToolBar, { modules, formats } from "./EditorToolBar";
 import "react-quill/dist/quill.snow.css";
-import '../styles/styles.css';
+import '../styles/EditorStyles.css';
 
 const TextEditorR = () =>{
 	const dispatch = useDispatch();

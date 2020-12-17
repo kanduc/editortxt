@@ -39,25 +39,30 @@ Size.whitelist = ["extra-small", "small", "medium", "large"];
 Quill.register(Size, true);
 
 // Add fonts to whitelist and register them
+var FontAttributor = Quill.import('formats/font');
+var fonts = ['impact', 'courier', 'comic', 'arial','times'];
+var lHeights = ['1.0','1.1','1.2','1.3','1.4','1.5','1.6'];
+FontAttributor.whitelist = fonts;
+Quill.register(FontAttributor, true);
+/*
 const Font = Quill.import("formats/font");
 Font.whitelist = [
-  "arial",
-  "comic-sans",
-  "courier-new",
-  "georgia",
-  "helvetica",
-  "lucida"
+  'arial',
+  'comic-sans',
+  'roboto'
 ];
 Quill.register(Font, true);
+*/
 
 // Modules object for setting up the Quill editor
 export const modules = {
-  toolbar: {
+  toolbar:
+   {
     container: "#toolbar",
     handlers: {
       undo: undoChange,
       redo: redoChange
-    }
+    },
   },
   history: {
     delay: 500,
@@ -93,12 +98,11 @@ export const QuillToolbar = () => (
   <div id="toolbar">
     <span className="ql-formats">
       <select className="ql-font" defaultValue="arial">
+        <option value="impact">Impact</option>
+        <option value="courier">Curier</option>
+        <option value="comic">Comic-Sans</option>
         <option value="arial">Arial</option>
-        <option value="comic-sans">Comic Sans</option>
-        <option value="courier-new">Courier New</option>
-        <option value="georgia">Georgia</option>
-        <option value="helvetica">Helvetica</option>
-        <option value="lucida">Lucida</option>
+        <option value="times">Times New</option>
       </select>
       <select className="ql-size" defaultValue="medium">
         <option value="extra-small">Size 1</option>
