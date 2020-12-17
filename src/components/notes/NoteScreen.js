@@ -7,6 +7,7 @@ import { NotesContador } from './NotesContador';
 import { NotesFormatBar } from './NotesFormatBar';
 import { NotesLength } from './NotesLength';
 import Loader from 'react-loader-spinner';
+import { TextEditorR } from '../../menu/TextEditorR';
 
 /* import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -168,6 +169,7 @@ useEffect(() => {
         >
 
         </textarea>
+   <TextEditorR/>
 </div>
       {/*   <div className="notes__image">
             <img 
