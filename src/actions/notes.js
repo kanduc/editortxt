@@ -87,11 +87,11 @@ export const startSaveNote=(note)=>{
         console.log("nota a guardar")
         console.log(noteToFirestore)
         //espera
-        //await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
-        db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore).then(() =>{
+        await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
+        /*db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore).then(() =>{
             console.log("update")
             dispatch(refreshNote(note.id, noteToFirestore));
-        })
+        })*/
         /* Swal.fire('Guardado', `Tu documento ha sido guardado`, 'success'); */
     }
 
