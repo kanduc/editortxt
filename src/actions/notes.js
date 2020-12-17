@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2'
+import { NoteScreen } from "../components/notes/NoteScreen";
 import { db } from "../firebase/firebase-config";
 import { loadNote } from "../helpers/loadNote";
 import { types } from "../types/types";
@@ -7,9 +8,7 @@ import { types } from "../types/types";
 
 
 export const startNewNote = () => {
-
     return async (dispatch, getState)=>{
-        console.log("START NEW NOTE");
         //Traer todo el estado de la aplicación
         const {uid}=getState().auth;//cogeremos el uid para la BD
         /* console.log(uid); */
@@ -26,25 +25,8 @@ export const startNewNote = () => {
         /* console.log(doc); */
         dispatch(activeNote(doc.id, newNote));
         dispatch(addNewNote(doc.id, newNote));
-        /* console.log(doc); */
-    }
-  
-}
-
-
-
-export const getNote = (id) => {
-    return async (dispatch, getState) => {
-        console.log("get note")
-        const {uid}=getState().auth;
-        const doc= await db.doc(`${uid}/journal/notes/${ id}`).get();
-        console.log("doc");
-        console.log(doc.id)
-        console.log(doc.data())
-        dispatch(activeNote(doc.id,doc.data()));
     }
 }
-
 
 export const activeNote=(id, note)=>({
     type: types.notesActive,
@@ -64,7 +46,6 @@ export const addNewNote=(id, note)=>({
 
 export const startLoadingNotes=(uid)=>{
     return async (dispatch)=>{
-        console.log("START LOADING NOTES");
         const text=await loadNote(uid);
         dispatch(setNote(text));
     }
@@ -76,25 +57,17 @@ export const setNote=( notes )=>({
 
 })
 
-
 //ACCION de grabado
 export const startSaveNote=(note)=>{
     return async (dispatch, getState)=>{
-        console.log("START SAVE NOTE");
         const {uid} = getState().auth;
         const noteToFirestore={ ...note };
         delete noteToFirestore.id; //borró el id del spread
-        console.log("nota a guardar")
-        console.log(noteToFirestore)
         //espera
         await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
-        /*db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore).then(() =>{
-            console.log("update")
-            dispatch(refreshNote(note.id, noteToFirestore));
-        })*/
+        dispatch(refreshNote(note.id, noteToFirestore));
         /* Swal.fire('Guardado', `Tu documento ha sido guardado`, 'success'); */
     }
-
 }
 
 //Unicamente actualice de mi store, unicamente la que cambia
@@ -111,7 +84,6 @@ export const refreshNote=(id, note)=>({
 
 export const startDeleting=(id)=>{
     return async(dispatch, getState)=>{
-        console.log("START DELETING");
         const {name} = getState().auth
         const uid=getState().auth.uid;
         const {active}=getState().notes;
@@ -122,10 +94,9 @@ export const startDeleting=(id)=>{
             }else{
                  return titleStart;
             }
-         }
+        }
         const nameParsed=name
         const nameSplit=nameParsed.split(" ") 
-        
         /*await db.doc(`${uid}/journal/notes/${ id}`).delete();*/
         Swal.fire({
             title: `${nameSplit[0]}, ¿Estás seguro de eliminar ${messageDocument()}?`,
@@ -135,7 +106,7 @@ export const startDeleting=(id)=>{
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Sí, eliminar ahora'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 db.doc(`${uid}/journal/notes/${ id}`).delete().then(() =>{
                     console.log("elimino bd");
@@ -154,7 +125,6 @@ export const startDeleting=(id)=>{
         })
     }
 }
-    
 
 export const deleteNote=(id)=>({
     type:types.notesDelete,
