@@ -11,8 +11,8 @@ import '../styles/styles.css';
 const TextEditorR = () =>{
 	//const [state, setState] = React.useState({ value: null });
 	const dispatch = useDispatch();
-	const {active} = useSelector( state => state.notes);
-	const {title, body} = active
+	/*const {active} = useSelector( state => state.notes);
+	const {title, body} = active*/
 	const {active:docNew} = useSelector( state => state.notes );
    	const  [stateEditor, handleTextChange]= textForm(docNew);
    	const {body,id}=stateEditor;
