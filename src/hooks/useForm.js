@@ -24,6 +24,15 @@ export const useForm = ( initialState = {} ) => {
         	[target.name]:target.value // target.name= name : value , para email sería target.name=email :value
     	})
 	}
+	
+	/*
+	const [stateEditor, setStateEditor] = useState({ text: initialState.body });
+	
+	const handleTextChange=({text})=>{
+		console.log("handleTextChange");
+		console.log(text);
+		setStateEditor({text});
+	}*/
 
 	console.log("values "+values)
 	return [values, handleInputChange, reset];
