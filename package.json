@@ -2,19 +2,33 @@
   "name": "journal-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.14.8",
+    "node": "12.19.0"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "draft-js": "^0.11.7",
+    "draft-js-import-html": "^1.4.1",
+    "draftjs-to-html": "^0.9.1",
     "firebase": "^8.0.0",
+    "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-draft-wysiwyg": "^1.14.5",
+    "react-i18next": "^11.7.3",
+    "react-loader-spinner": "^3.1.14",
+    "react-quill": "^1.3.5",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-translate": "^7.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "sweetalert2": "^10.9.1",
     "validator": "^13.1.17",
     "web-vitals": "^0.2.4"
   },
@@ -41,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/draft-js": "^0.10.44"
   }
 }
