@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { activeNote, startDeleting } from '../../actions/notes';
 import { useForm } from '../../hooks/useForm';
-/*import { NotesAppBar } from './NotesAppBar';*/
+import { NotesAppBar } from './NotesAppBar';
 import { NotesContador } from './NotesContador';
-/*import { NotesFormatBar } from './NotesFormatBar';*/
+import { NotesFormatBar } from './NotesFormatBar';
 import { NotesLength } from './NotesLength';
 import Loader from 'react-loader-spinner';
-import TextEditorR from "../../menu/TextEditorR";
+import TextEditorR from '../../menu/TextEditorR';
 
 /* import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -22,34 +22,27 @@ export const NoteScreen = () => {
     /* console.log(docNew); */
 
    const  [values, handleInputChange, reset]= useForm(docNew);
-   console.log("datos")
-   console.log(values)
 
    const {body, title,id,titleStart}=values;
    const activeId = useRef( docNew.id );
 
    useEffect(() => {
-    console.log("useEffect id diferente")
       //ejecutar la acción si o solo sí el id es diferente
-    if(docNew.id!==activeId.current){
-      console.log("id es diferente-reset")
-      reset(docNew);
-      activeId.current=docNew.id
-      console.log(activeId.current)
-    }
+if(docNew.id!==activeId.current){
+    reset(docNew);
+    activeId.current=docNew.id
+}
 
    }, [docNew, reset])
 
 
-  useEffect(() => {
-    console.log("dispatch active note")
-     /* console.log(values); */
-     dispatch(activeNote(values.id, {...values}));
-  }, [values, dispatch])
+useEffect(() => {
+   /* console.log(values); */
+   dispatch(activeNote(values.id, {...values}));
+}, [values, dispatch])
 
    /* const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),
-
     
   ); */
 //dispatch(); acción asíncrona de borrar
@@ -63,7 +56,11 @@ export const NoteScreen = () => {
   const keyPressHandler = (e) => {
     
         setTest(true);
-        /* console.log(test); */    
+        /* console.log(test); */
+  
+        
+     
+ 
   }
   const keyUpHandler=(e)=>{
       setTimeout(()=>{
@@ -74,9 +71,7 @@ export const NoteScreen = () => {
   }
 
 
-
   useEffect(() => {
-    console.log("useEffect windoweventlistener")
     
     window.addEventListener('keydown', keyPressHandler);
     
@@ -90,10 +85,19 @@ export const NoteScreen = () => {
   },[docNew]);
 
 
+
+
+
+ 
+
+
+
+
+
     return (
         <div className="notes__main-content">
         
-   {/*     <NotesAppBar /> */}
+        <NotesAppBar />
    {/*      <NotesFormatBar /> */}
         <div className="notes__content">
 <div className="notes__appbar">
@@ -108,7 +112,7 @@ export const NoteScreen = () => {
 
         />
 
-<div className="spinner">
+    <div className="spinner">
         {(test)?
             <div className="spinner">
                 <p className="spinner-msg">Guardando</p>
@@ -127,8 +131,8 @@ export const NoteScreen = () => {
      
      <div className="notes__search-box">
  
-  {/*
-   <div className="notes__search-container">
+ {/*
+  <div className="notes__search-container">
     <form>
       <input 
       type="text" 
@@ -156,16 +160,16 @@ export const NoteScreen = () => {
       /> */}
 <div  className="notes__content">
 
-      <textarea
+        <textarea
        placeholder="Escriba Aquí"
         className="notes__textarea"
         name="body"
         value= {body}
-        onChange={handleInputChange} />
-      
-      
-      
+        onChange={handleInputChange}
+        >
 
+        </textarea>
+   <TextEditorR/>
 </div>
       {/*   <div className="notes__image">
             <img 
@@ -177,7 +181,7 @@ export const NoteScreen = () => {
         </div>
    
             <NotesContador />
-            <NotesLength />
+            {/*<NotesLength />*/}
 
            {/*  <button
             className="btn btn-danger"
