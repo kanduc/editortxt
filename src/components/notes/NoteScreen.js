@@ -137,6 +137,6 @@ export const NoteScreen = () => {
       </div>
     </div>
     <NotesContador />
-    {/*<NotesLength />*/}
+    <NotesLength />
   </div>
 )}
