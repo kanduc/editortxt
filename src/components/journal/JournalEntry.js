@@ -10,10 +10,8 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
     const documentDate=moment(date);
     const dispatch = useDispatch();
     const {active} = useSelector( state => state.notes );
-
-    
-
-    const handleEntryClick=()=>{        
+  
+    const handleEntryClick=()=>{     
         dispatch(activeNote(id,{
             date, title, body,titleStart
         }));
@@ -21,6 +19,7 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
     const handleDelete=()=>{
           handleEntryClick();
         dispatch(startDeleting(id));
+        /* console.log(id); */
     }
 
   const dateCreated=documentDate.format('dddd');
@@ -72,9 +71,9 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
         </div> */}
         <div className="journal__entry-body">
         <p className="journal__entry-title">
+
          {title ? `${title.substring(0,20)}` : (titleStart=`Sin título ${indice+1}` && `Sin título ${indice+1}`)
-         
-         
+            
          }
           {/*   Título del archivo {value} */} {/* Sino pone nada por defecto sería Texto 1,2,3, etc */}
         </p>

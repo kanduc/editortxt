@@ -17,7 +17,6 @@ export const NotesLength = () => {
       
           
       /* console.log(extractContent(body)); */
-  
 
     return (
         <div className="notes__length">

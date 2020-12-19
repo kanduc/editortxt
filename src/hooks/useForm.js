@@ -17,6 +17,5 @@ export const useForm = ( initialState = {} ) => {
         	[target.name]:target.value // target.name= name : value , para email sería target.name=email :value
     	})
 	}
-
 	return [values, handleInputChange, reset];
 }

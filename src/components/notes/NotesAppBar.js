@@ -23,6 +23,7 @@ const handleDelete=()=>{
 }
 
 useEffect(() => {
+    console.log("noteappbar");
     dispatch(startSaveNote(active));
 }, [dispatch, title, active, bodyLength])
 
@@ -32,6 +33,7 @@ useEffect(() => {
             {/* <span>{date} de noviembre 2020</span> */}
 
             <div>
+
                {/*  <button 
                 className="btn btn-danger"
                 onClick={handleDelete}
