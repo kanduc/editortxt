@@ -13,13 +13,7 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
 
     
 
-    const handleEntryClick=()=>{
-        console.log("handleEntryClick");
-        console.log("id "+id)
-        console.log("body "+body)
-        //dispatch(getNote(id));
-
-        
+    const handleEntryClick=()=>{        
         dispatch(activeNote(id,{
             date, title, body,titleStart
         }));
@@ -27,10 +21,8 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
     const handleDelete=()=>{
           handleEntryClick();
         dispatch(startDeleting(id));
-        /* console.log(id); */
     }
 
-  /*   console.log(documentDate); */
   const dateCreated=documentDate.format('dddd');
 
   const pruebaDate=()=>{

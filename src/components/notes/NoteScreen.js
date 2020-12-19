@@ -86,7 +86,7 @@ export const NoteScreen = () => {
               value={ title }
               onChange={handleInputChange}
             />
-            <div className="spinner">
+            <div className="spinner-container">
               {(test)?
               <div className="spinner">
                 <p className="spinner-msg">Guardando</p>

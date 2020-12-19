@@ -12,8 +12,8 @@ export const NotesLength = () => {
         var span = document.createElement('span');
         span.innerHTML = s;
         return span.textContent || span.innerText;
-      };
-      let longitud=extractContent(body).length;
+    };
+    let longitud=extractContent(body).length;
       
           
       /* console.log(extractContent(body)); */
