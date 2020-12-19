@@ -10,16 +10,8 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
     const documentDate=moment(date);
     const dispatch = useDispatch();
     const {active} = useSelector( state => state.notes );
-
-    
-
-    const handleEntryClick=()=>{
-        console.log("handleEntryClick");
-        console.log("id "+id)
-        console.log("body "+body)
-        //dispatch(getNote(id));
-
-        
+  
+    const handleEntryClick=()=>{     
         dispatch(activeNote(id,{
             date, title, body,titleStart
         }));
@@ -30,7 +22,6 @@ export const JournalEntry = ( {indice,id, date, title, body,titleStart}) => {
         /* console.log(id); */
     }
 
-  /*   console.log(documentDate); */
   const dateCreated=documentDate.format('dddd');
 
   const pruebaDate=()=>{
