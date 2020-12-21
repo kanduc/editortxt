@@ -35,7 +35,11 @@ const TextEditorR = () =>{
 	        	placeholder={"Escriba algo..."}
 	        	modules={modules}
 	        	formats={formats}
+				
+			
+			
 	      	/>
+			  {/* <div className="notesEditor">prueba 123456</div> */}
 	    </div>
 	 );
 };
