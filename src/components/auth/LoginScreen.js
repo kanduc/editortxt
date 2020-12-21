@@ -4,21 +4,20 @@ import React, { useEffect, useState } from 'react';
 import edit4 from '../../styles/img/edit4.svg'; */
 import edit7 from '../../styles/img/edit7.svg'
 /* import edit3 from '../../styles/img/edit3.svg'; */
-import {
-    Link,
-  } from "react-router-dom";
+import {Link} from "react-router-dom";
 import { useForm } from '../../hooks/useForm';
 import { useDispatch, useSelector } from 'react-redux';
+import { removeError, setError } from '../../actions/ui';
 import {startFacebookLogin, startGoogleLogin, startLoginEmailPassword, startTwitterLogin} from '../../actions/auth'
 import { RegisterScreen } from './RegisterScreen';
 /* import { removeError, setError } from '../../actions/ui'; */
 
 
 export const LoginScreen = () => {
-    const {loading} = useSelector( state => state.ui );
+  const {loading} = useSelector( state => state.ui );
     const dispatch = useDispatch();
     //Es darle acceso al dispatch, sirve para hacer dispatch de acciones
-//operaciones@hotmail.com 12345678
+    const {msgError} = useSelector( state => state.ui );
     const [values, handleInputChange]=useForm({
         email:'',
         password:'',
@@ -29,14 +28,14 @@ export const LoginScreen = () => {
     //SUBMIT DEL FORMULARIO
     const handleLogin=(e)=>{
         e.preventDefault();
-       /*  console.log(email, password); */
+        console.log(email); 
      /*   dispatch(login(4555,'Juniorjuo')); */
 
-       
        /* if(isFormValid()){
-        console.log(`Formulario correcto`); */
-        dispatch(startLoginEmailPassword(email, password));
-   /*  } */
+            console.log(`Formulario correcto`);
+            dispatch(startLoginEmailPassword(email, password));
+        }*/
+      dispatch(startLoginEmailPassword(email, password));
     }
 
 //instalar librería npm i validator
@@ -66,8 +65,6 @@ const handlePrueba=()=>{
     console.log(prueba);
       
 }
-
-
     const handleGoogleLogin=()=>{
         dispatch(startGoogleLogin());
     }
@@ -79,72 +76,65 @@ const handlePrueba=()=>{
     const handleTwitterLogin=()=>{
             dispatch(startTwitterLogin());
     }
-
-
-    return (
-        <>
-        <div className={prueba?"container sign-up-mode":"container "}>
     
+  return (
+    <>
+    <div className={prueba?"container sign-up-mode":"container "}>
       <div className="forms-container">
         <div className="signin-signup">
           <form className="sign-in-form" onSubmit={handleLogin}>
             <h2 className="title">Iniciar Sesión</h2>
             <div className="input-field">
               <i className="fas fa-user i"></i>
-              <input 
-            type="text"
-            name="email"
-            placeholder="Email"
-            autoComplete="off"
-   
-            value={email}
-            onChange={handleInputChange}
-        />
+              <input type="text"
+                name="email"
+                placeholder="Email"
+                autoComplete="off" 
+                value={email}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock i"></i>
               <input
-        type="password"
-        name="password"
-        placeholder="Tu contraseña"
- 
-        value={password}
-        onChange={handleInputChange}
-         />
+                type="password"
+                name="password"
+                placeholder="Tu contraseña" 
+                value={password}
+                onChange={handleInputChange}
+              />
             </div>
             <input 
-            type="submit" 
-            value="Login" 
-            className="btn solid"
-            disabled={loading}
-             />
+              type="submit" 
+              value="Login" 
+              className="btn solid"
+              disabled={loading}
+            />
             <p className="social-text">Iniciar sesión con redes sociales</p>
             <div className="social-media">
-            <div 
-    className="social-icon facebook"
-    onClick={handleFacebookLogin}
->
+              <div 
+                className="social-icon facebook"
+                onClick={handleFacebookLogin}
+              >
                 <i class="fab fa-facebook-f"></i>
               </div>
               <div 
-    className="social-icon twitter"
-    onClick={handleTwitterLogin}
->
+                className="social-icon twitter"
+                onClick={handleTwitterLogin}
+              >
                 <i class="fab fa-twitter"></i>
               </div>
               <div 
-    className="social-icon google"
-    onClick={handleGoogleLogin}
->
+                className="social-icon google"
+                onClick={handleGoogleLogin}
+              >
                 <i class="fab fa-google"></i>
               </div>
-              {/* <a href="#" class="social-icon">
+              {/*<a href="#" class="social-icon">
                 <i class="fab fa-linkedin-in"></i>
               </a> */}
             </div>
           </form>
-          
-         
         </div>
       </div>
       <div className="panels-container">
@@ -156,24 +146,19 @@ const handlePrueba=()=>{
               freelance, no te arrepentirás de usarlo. ¡Anímate!
             </p>
             <div className="link__border">
-            <Link 
-            onClick={handlePrueba}
-            id="sign-up-btn"
-            className="link"
-            to="/auth/register"
-        >
-       Regístrate
-        </Link>
+              <Link 
+                onClick={handlePrueba}
+                id="sign-up-btn"
+                className="link"
+                to="/auth/register">
+                Regístrate
+              </Link>
             </div>
-          
-      
-           
           </div>
           <img src={edit7} className="image" alt="" />
         </div>
-        
       </div>
-      </div>
-        </>
-    )
+    </div>
+  </>
+  )
 }

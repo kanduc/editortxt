@@ -9,18 +9,17 @@ export const JournalScreen = () => {
     const {active} = useSelector( state => state.notes );
 /*     console.log(active); */
 
-
     return (
         <div className="journal__main-content">
             <Sidebar />
 
             <main>
-            {
+                {
                 //Si active tiene algun doc muestra sino se pone en página de inicio
-                (active)?<NoteScreen />: <NothingSelected />
-            }
+                    (active)?<NoteScreen />: <NothingSelected />
+                }
                 {/* <NothingSelected /> */}
-              {/*   <NoteScreen /> */}
+                {/*   <NoteScreen /> */}
             </main>
         </div>
     )
