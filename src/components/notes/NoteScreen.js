@@ -8,7 +8,7 @@ import { NotesFormatBar } from './NotesFormatBar';
 import { NotesLength } from './NotesLength';
 import Loader from 'react-loader-spinner';
 import TextEditorR from '../../menu/TextEditorR';
-import Mark from "mark.js";
+//import Mark from "mark.js";
 import $ from 'jquery';
 
 /* import { EditorState } from 'draft-js';
