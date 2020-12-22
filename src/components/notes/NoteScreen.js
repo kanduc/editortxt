@@ -264,19 +264,11 @@ const {inputValue}=state
                 <p className="spinner-msg">Guardado</p>
               </div>
               }
+            </div>
+            <div>
+             
             </div>  
-          <div className="notes__search-box">
-         {/*  <span>
-            R
-          </span> */}
-          <input type="text" 
-          id="myInput"  
-          placeholder="Buscar..." 
-          title="Escriba algo para buscar" 
-          name="keyword"
-     
-         ></input>
-          </div>  
+    
       </div>
       <div 
        className="notes__content"
@@ -303,15 +295,12 @@ const {inputValue}=state
       
         </textarea>
         </div> */}
-        <div 
-      
        
-       >
        
         <TextEditorR 
  
         />
-        </div>
+        
       </div>
     </div>
     <NotesContador />

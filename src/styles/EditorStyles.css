@@ -33,6 +33,7 @@
   min-height: 400px;
   height: 310px;
   overflow-y: auto;
+  font-size: 17px;
 }
 
 .ql-container.ql-snow {

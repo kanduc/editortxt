@@ -414,7 +414,18 @@ bottom: 20px;
   form {
     padding: 0 1.5rem;
   }
-
+  .form-login{
+    margin-top:-120px;
+  }
+  .form-register{
+    margin-top:80px;
+  }
+  .panel-login{
+    margin-top:40px;
+  }
+  .panel-register{
+    margin-top:-20px;
+  }
   .image {
     display: none;
   }
@@ -467,7 +478,8 @@ bottom: 20px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
-  width: 650px;
+  margin-top: 10px;
+  width: 350px;
   border-radius: 5px 5px;
   outline: none;
 }

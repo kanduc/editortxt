@@ -63,7 +63,7 @@ export const RegisterScreen = () => {
     return (
         <>
         <div  className={prueba?"container ":"container sign-up-mode"}>
-      <div className="forms-container">
+      <div className="forms-container form-register">
         <div className="signin-signup">
           
           <form className="sign-up-form" onSubmit={handleRegister}>
@@ -133,7 +133,7 @@ export const RegisterScreen = () => {
         </div>
       </div>
 
-      <div className="panels-container">
+      <div className="panels-container panel-register">
         <div className="panel right-panel">
           <div className="content">
             <h3>¿Ya tienes un usuario?</h3>

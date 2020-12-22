@@ -149,6 +149,7 @@ transition: background-color .3s ease;
 }
 
 spinner-container {
+  
   display: flex;
 }
 .spinner {
@@ -165,6 +166,5 @@ spinner-container {
 .spinner-msg {
   display: inline-block;
   margin: 5px;
-  margin-top:16px;
   font-size: 14px;
 }
