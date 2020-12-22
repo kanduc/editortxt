@@ -80,7 +80,7 @@ const handlePrueba=()=>{
   return (
     <>
     <div className={prueba?"container sign-up-mode":"container "}>
-      <div className="forms-container">
+      <div className="forms-container form-login">
         <div className="signin-signup">
           <form className="sign-in-form" onSubmit={handleLogin}>
             <h2 className="title">Iniciar Sesión</h2>
@@ -137,7 +137,7 @@ const handlePrueba=()=>{
           </form>
         </div>
       </div>
-      <div className="panels-container">
+      <div className="panels-container panel-login">
         <div className="panel left-panel">
           <div className="content">
             <h3>¿Eres usuario nuevo?</h3>

@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { JournalEntry } from './JournalEntry'
+import { JournalEntry } from './JournalEntry';
+import {useForm} from '../../hooks/useForm'
 
 export const JournalEntries = () => {
 /*     const entries=[1]; */
 const [huawei, sethuawei] = useState({})
 
+const [values, handleInputChange, reset]=useForm({
+    search:'',
+})
+
+const {search}=values;
 
     useEffect(() => {
       fetch(`https://api.timezonedb.com/v2.1/get-time-zone?key=599V8N2RDZWH&format=json&by=position&lat=-9.189967&lng=-75.015152`)
@@ -67,15 +73,48 @@ key={value.id}
     }
 
 
+    const dataStore=notes;
+    let res = dataStore.filter(o=>Object.values(o).toString().toLowerCase().includes(search)) 
+    console.log(res);
+
+    useEffect(() => {
+        dataStore.filter(o=>Object.values(o).toString().toLowerCase().includes(search))
+    }, [search])
+
+   
+
+
     return (
         <div className="journal__entries">
+        <div className="journal__search">
+        <input type="text" 
+          id="myInput"  
+          placeholder="Buscar..." 
+          title="Escriba algo para buscar" 
+          name="search"
+          autoComplete="off"
+          value={search}
+          onChange={handleInputChange}
+     
+         ></input>
+        </div>
+        <div className="journal__similar">
+        <span className="journal__coincidencias">{(search.length>0)?<h2>{`${res.length} coincidencias con su búsqueda`}</h2>:false}</span>
+        </div>
+       
         <div className="journal__entries-title">
         <span className="journal__text-history">Historial</span>
         <span className="journal__text-history">{`${day}-${setMonth()}-${year}`}</span>
         </div>
         
             {
-                notes.map((value,i)=>(
+                (search.length>1)? res.map((value,i)=>(
+                    <JournalEntry 
+                    key={value.id} 
+                    indice={i}
+                 {...value}
+                    />
+                )):notes.map((value,i)=>(
                     <JournalEntry 
                     key={value.id} 
                     indice={i}

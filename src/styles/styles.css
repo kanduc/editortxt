@@ -414,7 +414,18 @@ bottom: 20px;
   form {
     padding: 0 1.5rem;
   }
-
+  .form-login{
+    margin-top:-120px;
+  }
+  .form-register{
+    margin-top:80px;
+  }
+  .panel-login{
+    margin-top:40px;
+  }
+  .panel-register{
+    margin-top:-20px;
+  }
   .image {
     display: none;
   }
@@ -457,4 +468,65 @@ bottom: 20px;
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+#myInput {
+  background-image: url('./img/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 13px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  margin-top: 10px;
+  width: 350px;
+  border-radius: 5px 5px;
+  outline: none;
+}
+.sombreado {
+  background: red;
+  color: white;
+  font-weight: inherit;
+}
+
+.wrap {
+  position: relative;
+  display:block;
+}
+/* match the two */
+.wrap code,
+.wrap textarea {
+    position:absolute;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-align: start;
+    appearance: textarea;
+    flex-direction: column;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    border-width: 1px;
+    border-style: solid;
+    padding: 2px;
+    background-color:transparent;
+    z-index: 2;
+    box-sizing: border-box;
+}
+.wrap code {
+    z-index: 1;
+    top:0;
+    left:0;
+    border-color:transparent;
+    color:transparent;
+    background-color: white;
+}
+.wrap code mark {
+  color: transparent;
+  background-color: yellow;
+  padding:0;
+  margin:0;
 }
